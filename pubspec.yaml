@@ -1,0 +1,48 @@
+name: money_tracker
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.5
+  firebase_core: ^2.11.0
+  firebase_auth: ^4.5.0
+  cloud_firestore: ^4.6.0
+  email_validator: ^2.1.17
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.1
+  get_it: ^7.4.1
+  injectable: ^2.1.1
+  flutter_bloc: ^8.1.2
+  fl_chart: ^0.62.0
+  intl: ^0.17.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+  build_runner: ^2.3.3
+  freezed: ^2.3.3
+  json_serializable: ^6.6.2
+  injectable_generator: ^2.1.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/folder.png
+  fonts:
+    - family: SF UI Display
+      fonts:
+        - asset: assets/fonts/sf_uiI_display_bold.ttf
+          weight: 700
+        - asset: assets/fonts/sf_uiI_display_semibold.ttf
+          weight: 600
+        - asset: assets/fonts/sf_uiI_display_medium.ttf
+          weight: 500
+        - asset: assets/fonts/sf_uiI_display_regular.ttf
+          weight: 400
