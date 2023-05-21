@@ -52,6 +52,10 @@ class _LoginFormState extends State<LoginForm> {
           _passwordController.text.trim(),
         );
 
+    setState(() {
+      _isProcessing = false;
+    });
+
     if (isLogged && mounted) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -93,8 +97,8 @@ class _LoginFormState extends State<LoginForm> {
               ElevatedButton(
                 onPressed: !_isProcessing ? () => signin(context) : null,
                 child: !_isProcessing
-                    ? Text('Войти')
-                    : CircularProgressIndicator(),
+                    ? const Text('Войти')
+                    : const CircularProgressIndicator(),
               ),
             ],
           ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:money_tracker/ui/widgets/login/login_footer.dart';
 import 'package:money_tracker/ui/widgets/login/login_form.dart';
 import 'package:money_tracker/ui/widgets/login/login_header.dart';
-import 'package:money_tracker/ui/widgets/signup_form.dart';
+import 'package:money_tracker/ui/widgets/signup/signup_form.dart';
 
 enum FormType { login, signup }
 

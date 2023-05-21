@@ -6,4 +6,5 @@ abstract class RecordService {
   Future<void> add(Record record);
   Future<void> update(Record record);
   Future<void> delete(String id);
+  Future<void> deleteByCategoryId(String categoryId);
 }

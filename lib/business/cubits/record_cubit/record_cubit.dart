@@ -10,34 +10,19 @@ part 'record_cubit.freezed.dart';
 
 @injectable
 class RecordCubit extends Cubit<RecordState> {
-  RecordCubit({required this.recordService})
-      : super(const RecordState.initial());
+  RecordCubit({required this.recordService}) : super(const RecordState.empty());
   final RecordService recordService;
 
   Future<void> loadRecords() async {
     try {
       emit(const RecordState.loading());
+
       List<Record> records = await recordService.getAll();
 
       if (records.isNotEmpty) {
         emit(RecordState.loaded(records: records));
       } else {
-        emit(const RecordState.initial());
-      }
-    } catch (e) {
-      emit(RecordState.error(error: e.toString()));
-    }
-  }
-
-  Future<void> loadRecordsByCategoryId(String categoryId) async {
-    try {
-      emit(const RecordState.loading());
-      List<Record> records = await recordService.getByCategoryId(categoryId);
-
-      if (records.isNotEmpty) {
-        emit(RecordState.loaded(records: records));
-      } else {
-        emit(const RecordState.initial());
+        emit(const RecordState.empty());
       }
     } catch (e) {
       emit(RecordState.error(error: e.toString()));
@@ -47,10 +32,15 @@ class RecordCubit extends Cubit<RecordState> {
   Future<void> addRecord(Record record) async {
     try {
       emit(const RecordState.loading());
+
       await recordService.add(record);
-      final List<Record> records =
-          await recordService.getByCategoryId(record.categoryId);
-      emit(RecordState.loaded(records: records, message: 'Данные сохранены'));
+      final List<Record> records = await recordService.getAll();
+
+      if (records.isNotEmpty) {
+        emit(RecordState.loaded(records: records));
+      } else {
+        emit(const RecordState.empty());
+      }
     } catch (e) {
       emit(RecordState.error(
           error: e.toString().replaceFirst('Exception: ', '')));
@@ -60,10 +50,15 @@ class RecordCubit extends Cubit<RecordState> {
   Future<void> updateRecord(Record record) async {
     try {
       emit(const RecordState.loading());
+
       await recordService.update(record);
-      final List<Record> records =
-          await recordService.getByCategoryId(record.categoryId);
-      emit(RecordState.loaded(records: records, message: 'Данные сохранены'));
+      final List<Record> records = await recordService.getAll();
+
+      if (records.isNotEmpty) {
+        emit(RecordState.loaded(records: records));
+      } else {
+        emit(const RecordState.empty());
+      }
     } catch (e) {
       emit(RecordState.error(
           error: e.toString().replaceFirst('Exception: ', '')));
@@ -73,14 +68,31 @@ class RecordCubit extends Cubit<RecordState> {
   Future<void> deleteRecord(Record record) async {
     try {
       emit(const RecordState.loading());
-      await recordService.delete(record.id!);
-      final List<Record> records =
-          await recordService.getByCategoryId(record.categoryId);
+
+      await recordService.delete(record.id);
+      final List<Record> records = await recordService.getAll();
 
       if (records.isNotEmpty) {
-        emit(RecordState.loaded(records: records, message: 'Данные удалены'));
+        emit(RecordState.loaded(records: records));
       } else {
-        emit(const RecordState.initial(message: 'Данные удалены'));
+        emit(const RecordState.empty());
+      }
+    } catch (e) {
+      emit(RecordState.error(error: e.toString()));
+    }
+  }
+
+  Future<void> deleteRecordsByCategoryId(String categoryId) async {
+    try {
+      emit(const RecordState.loading());
+
+      await recordService.deleteByCategoryId(categoryId);
+      final List<Record> records = await recordService.getAll();
+
+      if (records.isNotEmpty) {
+        emit(RecordState.loaded(records: records));
+      } else {
+        emit(const RecordState.empty());
       }
     } catch (e) {
       emit(RecordState.error(error: e.toString()));

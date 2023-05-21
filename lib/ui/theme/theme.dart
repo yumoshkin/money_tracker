@@ -14,14 +14,11 @@ ThemeData themeData = _themeData.copyWith(
       _bottomNavigationBarLight(_themeData.bottomNavigationBarTheme),
   cardTheme: _cardTheme(_themeData.cardTheme),
   dialogTheme: _dialogTheme(_themeData.dialogTheme),
-  // textTheme: _textLight(_themeData.textTheme),
-  // inputDecorationTheme: _inputDecorationLidht(_themeLight.inputDecorationTheme),
-  // primaryColorDark: Colors.deepOrange[100],
 );
 
 ColorScheme _colorSceme(ColorScheme base) {
   return base.copyWith(
-    primary: Color(0xff9053eb),
+    primary: const Color(0xff9053eb),
   );
 }
 
@@ -29,11 +26,8 @@ ElevatedButtonThemeData _elevatedButtonThemeData() {
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       minimumSize: const Size.fromHeight(50),
-      // foregroundColor: Colors.black54,
-      // backgroundColor: Colors.deepOrange[100],
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
         fontSize: 17,
-        // fontWeight: FontWeight.w900,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
@@ -45,7 +39,7 @@ ElevatedButtonThemeData _elevatedButtonThemeData() {
 TextButtonThemeData _textButtonThemeData() {
   return TextButtonThemeData(
     style: TextButton.styleFrom(
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w700,
       ),
@@ -58,12 +52,12 @@ TextButtonThemeData _textButtonThemeData() {
 
 AppBarTheme _appBarTheme(AppBarTheme base) {
   return base.copyWith(
-    systemOverlayStyle: SystemUiOverlayStyle(
+    systemOverlayStyle: const SystemUiOverlayStyle(
       statusBarColor: Color(0xff9053eb),
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.light,
     ),
-    titleTextStyle: TextStyle(
+    titleTextStyle: const TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.bold,
     ),
@@ -73,11 +67,11 @@ AppBarTheme _appBarTheme(AppBarTheme base) {
 BottomNavigationBarThemeData _bottomNavigationBarLight(
     BottomNavigationBarThemeData base) {
   return base.copyWith(
-    selectedLabelStyle: TextStyle(
+    selectedLabelStyle: const TextStyle(
       fontSize: 10,
       fontWeight: FontWeight.w500,
     ),
-    unselectedLabelStyle: TextStyle(
+    unselectedLabelStyle: const TextStyle(
       fontSize: 10,
       fontWeight: FontWeight.w500,
     ),
@@ -92,7 +86,7 @@ CardTheme _cardTheme(CardTheme base) {
     clipBehavior: Clip.antiAliasWithSaveLayer,
     elevation: 8,
     shadowColor: Colors.black.withOpacity(0.5),
-    margin: EdgeInsets.only(top: 25),
+    margin: const EdgeInsets.only(top: 25),
   );
 }
 
@@ -103,24 +97,3 @@ DialogTheme _dialogTheme(DialogTheme base) {
     ),
   );
 }
-
-// AppBarTheme _appBarLight(AppBarTheme base) {
-//   return base.copyWith(
-//     color: Colors.black54,
-//     foregroundColor: Colors.deepOrange[100],
-//   );
-// }
-
-// InputDecorationTheme _inputDecorationLidht(InputDecorationTheme base) {
-//   return base.copyWith(
-//     floatingLabelStyle: TextStyle(
-//       color: Colors.deepOrange[100],
-//     ),
-//     iconColor: Colors.deepOrange[100],
-//     focusedBorder: UnderlineInputBorder(
-//       borderSide: BorderSide(
-//         color: Colors.deepOrange[100]!,
-//       ),
-//     ),
-//   );
-// }

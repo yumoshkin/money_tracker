@@ -10,17 +10,22 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.5
-  firebase_core: ^2.11.0
-  firebase_auth: ^4.5.0
-  cloud_firestore: ^4.6.0
+  firebase_core: ^2.13.0
+  firebase_auth: ^4.6.1
+  cloud_firestore: ^4.7.1
+  firebase_storage: ^11.2.1
   email_validator: ^2.1.17
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
-  get_it: ^7.4.1
+  get_it: ^7.6.0
   injectable: ^2.1.1
   flutter_bloc: ^8.1.2
   fl_chart: ^0.62.0
+  flutter_colorpicker: ^1.0.3
   intl: ^0.17.0
+  flutter_localization: ^0.1.11
+  mask_text_input_formatter: ^2.4.0
+  image_picker: ^0.8.7+5
 
 dev_dependencies:
   flutter_test:

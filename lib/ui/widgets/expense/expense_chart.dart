@@ -1,43 +1,57 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:money_tracker/business/cubits/expense_cubit/expense_cubit.dart';
 
 import 'package:money_tracker/data/models/expense/expense.dart';
-
-Map<String, Color> colorMap = {
-  'red': Colors.red,
-  'orange': Colors.orange,
-  'yellow': Colors.yellow,
-  'green': Colors.green,
-  'cyan': Colors.cyan,
-  'blue': Colors.blue,
-  'purple': Colors.purple,
-  'black': Colors.black,
-  'redAccent': Colors.redAccent,
-  'orangeAccent': Colors.orangeAccent,
-  'yellowAccent': Colors.yellowAccent,
-  'greenAccent': Colors.greenAccent,
-  'cyanAccent': Colors.cyanAccent,
-  'blueAccent': Colors.blueAccent,
-  'purpleAccent': Colors.purpleAccent,
-};
+import 'package:money_tracker/ui/utils/extentions.dart';
+import 'package:money_tracker/ui/utils/functions.dart';
 
 class ExpenseChart extends StatelessWidget {
   const ExpenseChart({super.key, required this.expenses});
   final List<Expense> expenses;
 
+  bool _isExpenseExist(List<Expense> expenses) {
+    if (expenses.isEmpty) {
+      return false;
+    }
+
+    for (var expense in expenses) {
+      if (expense.records.isNotEmpty) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
+    String month = '';
+    bool isExpenseExist = _isExpenseExist(expenses);
+    if (!isExpenseExist) {
+      month = getCapitalCaseMonth(context.read<ExpenseCubit>().state.month);
+    }
+
     return Container(
       height: 240,
       color: const Color(0xffd0d0d0).withOpacity(0.3),
-      child: PieChart(
-        PieChartData(
-          borderData: FlBorderData(show: false),
-          sectionsSpace: 0,
-          centerSpaceRadius: 40,
-          sections: _sections(),
-        ),
-      ),
+      child: isExpenseExist
+          ? PieChart(
+              PieChartData(
+                borderData: FlBorderData(show: false),
+                sectionsSpace: 0,
+                centerSpaceRadius: 40,
+                sections: _sections(),
+              ),
+            )
+          : Center(
+              child: Text(
+                'За $month нет расходов',
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+              ),
+            ),
     );
   }
 
@@ -45,11 +59,11 @@ class ExpenseChart extends StatelessWidget {
     return expenses
         .map(
           (expense) => PieChartSectionData(
-            title: expense.categoryName,
+            title: expense.category.name,
             value: expense.sum,
-            color: colorMap[expense.color],
+            color: expense.category.color.toColor(),
             radius: 50.0,
-            titleStyle: TextStyle(
+            titleStyle: const TextStyle(
               fontSize: 12.0,
               fontWeight: FontWeight.bold,
               color: Colors.white,

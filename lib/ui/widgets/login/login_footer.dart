@@ -31,7 +31,7 @@ class LoginFooter extends StatelessWidget {
                   child: const Text('Забыли пароль'),
                 ),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -39,19 +39,19 @@ class LoginFooter extends StatelessWidget {
               formType == FormType.login
                   ? 'Еще нет аккаунта?'
                   : 'Уже есть аккаунт?',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             TextButton(
               onPressed: toggleForm,
               child: Text(formType == FormType.login ? 'Регистрация' : 'Войти'),
             ),
           ],
         ),
-        SizedBox(height: 50),
+        const SizedBox(height: 50),
       ],
     );
   }

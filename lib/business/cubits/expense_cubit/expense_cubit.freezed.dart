@@ -16,81 +16,81 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ExpenseState {
-  DateTime get currentDate => throw _privateConstructorUsedError;
-  String get monthYearTitle => throw _privateConstructorUsedError;
+  int get year => throw _privateConstructorUsedError;
+  int get month => throw _privateConstructorUsedError;
   List<Expense> get expenses => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        initial,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loading,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loaded,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        empty,
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExpenseStateInitial value) initial,
     required TResult Function(ExpenseStateLoading value) loading,
     required TResult Function(ExpenseStateLoaded value) loaded,
+    required TResult Function(ExpenseStateEmpty value) empty,
     required TResult Function(ExpenseStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExpenseStateInitial value)? initial,
     TResult? Function(ExpenseStateLoading value)? loading,
     TResult? Function(ExpenseStateLoaded value)? loaded,
+    TResult? Function(ExpenseStateEmpty value)? empty,
     TResult? Function(ExpenseStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExpenseStateInitial value)? initial,
     TResult Function(ExpenseStateLoading value)? loading,
     TResult Function(ExpenseStateLoaded value)? loaded,
+    TResult Function(ExpenseStateEmpty value)? empty,
     TResult Function(ExpenseStateError value)? error,
     required TResult orElse(),
   }) =>
@@ -108,8 +108,8 @@ abstract class $ExpenseStateCopyWith<$Res> {
       _$ExpenseStateCopyWithImpl<$Res, ExpenseState>;
   @useResult
   $Res call(
-      {DateTime currentDate,
-      String monthYearTitle,
+      {int year,
+      int month,
       List<Expense> expenses,
       String message,
       String error});
@@ -128,21 +128,21 @@ class _$ExpenseStateCopyWithImpl<$Res, $Val extends ExpenseState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentDate = null,
-    Object? monthYearTitle = null,
+    Object? year = null,
+    Object? month = null,
     Object? expenses = null,
     Object? message = null,
     Object? error = null,
   }) {
     return _then(_value.copyWith(
-      currentDate: null == currentDate
-          ? _value.currentDate
-          : currentDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      monthYearTitle: null == monthYearTitle
-          ? _value.monthYearTitle
-          : monthYearTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       expenses: null == expenses
           ? _value.expenses
           : expenses // ignore: cast_nullable_to_non_nullable
@@ -160,250 +160,6 @@ class _$ExpenseStateCopyWithImpl<$Res, $Val extends ExpenseState>
 }
 
 /// @nodoc
-abstract class _$$ExpenseStateInitialCopyWith<$Res>
-    implements $ExpenseStateCopyWith<$Res> {
-  factory _$$ExpenseStateInitialCopyWith(_$ExpenseStateInitial value,
-          $Res Function(_$ExpenseStateInitial) then) =
-      __$$ExpenseStateInitialCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {DateTime currentDate,
-      String monthYearTitle,
-      List<Expense> expenses,
-      String message,
-      String error});
-}
-
-/// @nodoc
-class __$$ExpenseStateInitialCopyWithImpl<$Res>
-    extends _$ExpenseStateCopyWithImpl<$Res, _$ExpenseStateInitial>
-    implements _$$ExpenseStateInitialCopyWith<$Res> {
-  __$$ExpenseStateInitialCopyWithImpl(
-      _$ExpenseStateInitial _value, $Res Function(_$ExpenseStateInitial) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentDate = null,
-    Object? monthYearTitle = null,
-    Object? expenses = null,
-    Object? message = null,
-    Object? error = null,
-  }) {
-    return _then(_$ExpenseStateInitial(
-      currentDate: null == currentDate
-          ? _value.currentDate
-          : currentDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      monthYearTitle: null == monthYearTitle
-          ? _value.monthYearTitle
-          : monthYearTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      expenses: null == expenses
-          ? _value._expenses
-          : expenses // ignore: cast_nullable_to_non_nullable
-              as List<Expense>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ExpenseStateInitial implements ExpenseStateInitial {
-  const _$ExpenseStateInitial(
-      {required this.currentDate,
-      required this.monthYearTitle,
-      final List<Expense> expenses = const [],
-      this.message = '',
-      this.error = ''})
-      : _expenses = expenses;
-
-  @override
-  final DateTime currentDate;
-  @override
-  final String monthYearTitle;
-  final List<Expense> _expenses;
-  @override
-  @JsonKey()
-  List<Expense> get expenses {
-    if (_expenses is EqualUnmodifiableListView) return _expenses;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_expenses);
-  }
-
-  @override
-  @JsonKey()
-  final String message;
-  @override
-  @JsonKey()
-  final String error;
-
-  @override
-  String toString() {
-    return 'ExpenseState.initial(currentDate: $currentDate, monthYearTitle: $monthYearTitle, expenses: $expenses, message: $message, error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ExpenseStateInitial &&
-            (identical(other.currentDate, currentDate) ||
-                other.currentDate == currentDate) &&
-            (identical(other.monthYearTitle, monthYearTitle) ||
-                other.monthYearTitle == monthYearTitle) &&
-            const DeepCollectionEquality().equals(other._expenses, _expenses) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, currentDate, monthYearTitle,
-      const DeepCollectionEquality().hash(_expenses), message, error);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ExpenseStateInitialCopyWith<_$ExpenseStateInitial> get copyWith =>
-      __$$ExpenseStateInitialCopyWithImpl<_$ExpenseStateInitial>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        initial,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        loading,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        loaded,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        error,
-  }) {
-    return initial(currentDate, monthYearTitle, expenses, message, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        loading,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        loaded,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        error,
-  }) {
-    return initial?.call(
-        currentDate, monthYearTitle, expenses, message, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        loading,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        loaded,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(
-          currentDate, monthYearTitle, expenses, message, this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExpenseStateInitial value) initial,
-    required TResult Function(ExpenseStateLoading value) loading,
-    required TResult Function(ExpenseStateLoaded value) loaded,
-    required TResult Function(ExpenseStateError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExpenseStateInitial value)? initial,
-    TResult? Function(ExpenseStateLoading value)? loading,
-    TResult? Function(ExpenseStateLoaded value)? loaded,
-    TResult? Function(ExpenseStateError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExpenseStateInitial value)? initial,
-    TResult Function(ExpenseStateLoading value)? loading,
-    TResult Function(ExpenseStateLoaded value)? loaded,
-    TResult Function(ExpenseStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ExpenseStateInitial implements ExpenseState {
-  const factory ExpenseStateInitial(
-      {required final DateTime currentDate,
-      required final String monthYearTitle,
-      final List<Expense> expenses,
-      final String message,
-      final String error}) = _$ExpenseStateInitial;
-
-  @override
-  DateTime get currentDate;
-  @override
-  String get monthYearTitle;
-  @override
-  List<Expense> get expenses;
-  @override
-  String get message;
-  @override
-  String get error;
-  @override
-  @JsonKey(ignore: true)
-  _$$ExpenseStateInitialCopyWith<_$ExpenseStateInitial> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$ExpenseStateLoadingCopyWith<$Res>
     implements $ExpenseStateCopyWith<$Res> {
   factory _$$ExpenseStateLoadingCopyWith(_$ExpenseStateLoading value,
@@ -412,8 +168,8 @@ abstract class _$$ExpenseStateLoadingCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DateTime currentDate,
-      String monthYearTitle,
+      {int year,
+      int month,
       List<Expense> expenses,
       String message,
       String error});
@@ -430,21 +186,21 @@ class __$$ExpenseStateLoadingCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentDate = null,
-    Object? monthYearTitle = null,
+    Object? year = null,
+    Object? month = null,
     Object? expenses = null,
     Object? message = null,
     Object? error = null,
   }) {
     return _then(_$ExpenseStateLoading(
-      currentDate: null == currentDate
-          ? _value.currentDate
-          : currentDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      monthYearTitle: null == monthYearTitle
-          ? _value.monthYearTitle
-          : monthYearTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       expenses: null == expenses
           ? _value._expenses
           : expenses // ignore: cast_nullable_to_non_nullable
@@ -465,17 +221,17 @@ class __$$ExpenseStateLoadingCopyWithImpl<$Res>
 
 class _$ExpenseStateLoading implements ExpenseStateLoading {
   const _$ExpenseStateLoading(
-      {required this.currentDate,
-      required this.monthYearTitle,
+      {required this.year,
+      required this.month,
       final List<Expense> expenses = const [],
       this.message = '',
       this.error = ''})
       : _expenses = expenses;
 
   @override
-  final DateTime currentDate;
+  final int year;
   @override
-  final String monthYearTitle;
+  final int month;
   final List<Expense> _expenses;
   @override
   @JsonKey()
@@ -494,7 +250,7 @@ class _$ExpenseStateLoading implements ExpenseStateLoading {
 
   @override
   String toString() {
-    return 'ExpenseState.loading(currentDate: $currentDate, monthYearTitle: $monthYearTitle, expenses: $expenses, message: $message, error: $error)';
+    return 'ExpenseState.loading(year: $year, month: $month, expenses: $expenses, message: $message, error: $error)';
   }
 
   @override
@@ -502,17 +258,15 @@ class _$ExpenseStateLoading implements ExpenseStateLoading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExpenseStateLoading &&
-            (identical(other.currentDate, currentDate) ||
-                other.currentDate == currentDate) &&
-            (identical(other.monthYearTitle, monthYearTitle) ||
-                other.monthYearTitle == monthYearTitle) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
             const DeepCollectionEquality().equals(other._expenses, _expenses) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentDate, monthYearTitle,
+  int get hashCode => Object.hash(runtimeType, year, month,
       const DeepCollectionEquality().hash(_expenses), message, error);
 
   @JsonKey(ignore: true)
@@ -525,62 +279,60 @@ class _$ExpenseStateLoading implements ExpenseStateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        initial,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loading,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loaded,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        empty,
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         error,
   }) {
-    return loading(currentDate, monthYearTitle, expenses, message, this.error);
+    return loading(year, month, expenses, message, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
   }) {
-    return loading?.call(
-        currentDate, monthYearTitle, expenses, message, this.error);
+    return loading?.call(year, month, expenses, message, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(
-          currentDate, monthYearTitle, expenses, message, this.error);
+      return loading(year, month, expenses, message, this.error);
     }
     return orElse();
   }
@@ -588,9 +340,9 @@ class _$ExpenseStateLoading implements ExpenseStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExpenseStateInitial value) initial,
     required TResult Function(ExpenseStateLoading value) loading,
     required TResult Function(ExpenseStateLoaded value) loaded,
+    required TResult Function(ExpenseStateEmpty value) empty,
     required TResult Function(ExpenseStateError value) error,
   }) {
     return loading(this);
@@ -599,9 +351,9 @@ class _$ExpenseStateLoading implements ExpenseStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExpenseStateInitial value)? initial,
     TResult? Function(ExpenseStateLoading value)? loading,
     TResult? Function(ExpenseStateLoaded value)? loaded,
+    TResult? Function(ExpenseStateEmpty value)? empty,
     TResult? Function(ExpenseStateError value)? error,
   }) {
     return loading?.call(this);
@@ -610,9 +362,9 @@ class _$ExpenseStateLoading implements ExpenseStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExpenseStateInitial value)? initial,
     TResult Function(ExpenseStateLoading value)? loading,
     TResult Function(ExpenseStateLoaded value)? loaded,
+    TResult Function(ExpenseStateEmpty value)? empty,
     TResult Function(ExpenseStateError value)? error,
     required TResult orElse(),
   }) {
@@ -625,16 +377,16 @@ class _$ExpenseStateLoading implements ExpenseStateLoading {
 
 abstract class ExpenseStateLoading implements ExpenseState {
   const factory ExpenseStateLoading(
-      {required final DateTime currentDate,
-      required final String monthYearTitle,
+      {required final int year,
+      required final int month,
       final List<Expense> expenses,
       final String message,
       final String error}) = _$ExpenseStateLoading;
 
   @override
-  DateTime get currentDate;
+  int get year;
   @override
-  String get monthYearTitle;
+  int get month;
   @override
   List<Expense> get expenses;
   @override
@@ -656,8 +408,8 @@ abstract class _$$ExpenseStateLoadedCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DateTime currentDate,
-      String monthYearTitle,
+      {int year,
+      int month,
       List<Expense> expenses,
       String message,
       String error});
@@ -674,21 +426,21 @@ class __$$ExpenseStateLoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentDate = null,
-    Object? monthYearTitle = null,
+    Object? year = null,
+    Object? month = null,
     Object? expenses = null,
     Object? message = null,
     Object? error = null,
   }) {
     return _then(_$ExpenseStateLoaded(
-      currentDate: null == currentDate
-          ? _value.currentDate
-          : currentDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      monthYearTitle: null == monthYearTitle
-          ? _value.monthYearTitle
-          : monthYearTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       expenses: null == expenses
           ? _value._expenses
           : expenses // ignore: cast_nullable_to_non_nullable
@@ -709,17 +461,17 @@ class __$$ExpenseStateLoadedCopyWithImpl<$Res>
 
 class _$ExpenseStateLoaded implements ExpenseStateLoaded {
   const _$ExpenseStateLoaded(
-      {required this.currentDate,
-      required this.monthYearTitle,
+      {required this.year,
+      required this.month,
       required final List<Expense> expenses,
       this.message = '',
       this.error = ''})
       : _expenses = expenses;
 
   @override
-  final DateTime currentDate;
+  final int year;
   @override
-  final String monthYearTitle;
+  final int month;
   final List<Expense> _expenses;
   @override
   List<Expense> get expenses {
@@ -737,7 +489,7 @@ class _$ExpenseStateLoaded implements ExpenseStateLoaded {
 
   @override
   String toString() {
-    return 'ExpenseState.loaded(currentDate: $currentDate, monthYearTitle: $monthYearTitle, expenses: $expenses, message: $message, error: $error)';
+    return 'ExpenseState.loaded(year: $year, month: $month, expenses: $expenses, message: $message, error: $error)';
   }
 
   @override
@@ -745,17 +497,15 @@ class _$ExpenseStateLoaded implements ExpenseStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExpenseStateLoaded &&
-            (identical(other.currentDate, currentDate) ||
-                other.currentDate == currentDate) &&
-            (identical(other.monthYearTitle, monthYearTitle) ||
-                other.monthYearTitle == monthYearTitle) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
             const DeepCollectionEquality().equals(other._expenses, _expenses) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentDate, monthYearTitle,
+  int get hashCode => Object.hash(runtimeType, year, month,
       const DeepCollectionEquality().hash(_expenses), message, error);
 
   @JsonKey(ignore: true)
@@ -768,61 +518,60 @@ class _$ExpenseStateLoaded implements ExpenseStateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        initial,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loading,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loaded,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        empty,
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         error,
   }) {
-    return loaded(currentDate, monthYearTitle, expenses, message, this.error);
+    return loaded(year, month, expenses, message, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
   }) {
-    return loaded?.call(
-        currentDate, monthYearTitle, expenses, message, this.error);
+    return loaded?.call(year, month, expenses, message, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(currentDate, monthYearTitle, expenses, message, this.error);
+      return loaded(year, month, expenses, message, this.error);
     }
     return orElse();
   }
@@ -830,9 +579,9 @@ class _$ExpenseStateLoaded implements ExpenseStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExpenseStateInitial value) initial,
     required TResult Function(ExpenseStateLoading value) loading,
     required TResult Function(ExpenseStateLoaded value) loaded,
+    required TResult Function(ExpenseStateEmpty value) empty,
     required TResult Function(ExpenseStateError value) error,
   }) {
     return loaded(this);
@@ -841,9 +590,9 @@ class _$ExpenseStateLoaded implements ExpenseStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExpenseStateInitial value)? initial,
     TResult? Function(ExpenseStateLoading value)? loading,
     TResult? Function(ExpenseStateLoaded value)? loaded,
+    TResult? Function(ExpenseStateEmpty value)? empty,
     TResult? Function(ExpenseStateError value)? error,
   }) {
     return loaded?.call(this);
@@ -852,9 +601,9 @@ class _$ExpenseStateLoaded implements ExpenseStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExpenseStateInitial value)? initial,
     TResult Function(ExpenseStateLoading value)? loading,
     TResult Function(ExpenseStateLoaded value)? loaded,
+    TResult Function(ExpenseStateEmpty value)? empty,
     TResult Function(ExpenseStateError value)? error,
     required TResult orElse(),
   }) {
@@ -867,16 +616,16 @@ class _$ExpenseStateLoaded implements ExpenseStateLoaded {
 
 abstract class ExpenseStateLoaded implements ExpenseState {
   const factory ExpenseStateLoaded(
-      {required final DateTime currentDate,
-      required final String monthYearTitle,
+      {required final int year,
+      required final int month,
       required final List<Expense> expenses,
       final String message,
       final String error}) = _$ExpenseStateLoaded;
 
   @override
-  DateTime get currentDate;
+  int get year;
   @override
-  String get monthYearTitle;
+  int get month;
   @override
   List<Expense> get expenses;
   @override
@@ -890,6 +639,245 @@ abstract class ExpenseStateLoaded implements ExpenseState {
 }
 
 /// @nodoc
+abstract class _$$ExpenseStateEmptyCopyWith<$Res>
+    implements $ExpenseStateCopyWith<$Res> {
+  factory _$$ExpenseStateEmptyCopyWith(
+          _$ExpenseStateEmpty value, $Res Function(_$ExpenseStateEmpty) then) =
+      __$$ExpenseStateEmptyCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int year,
+      int month,
+      List<Expense> expenses,
+      String message,
+      String error});
+}
+
+/// @nodoc
+class __$$ExpenseStateEmptyCopyWithImpl<$Res>
+    extends _$ExpenseStateCopyWithImpl<$Res, _$ExpenseStateEmpty>
+    implements _$$ExpenseStateEmptyCopyWith<$Res> {
+  __$$ExpenseStateEmptyCopyWithImpl(
+      _$ExpenseStateEmpty _value, $Res Function(_$ExpenseStateEmpty) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? year = null,
+    Object? month = null,
+    Object? expenses = null,
+    Object? message = null,
+    Object? error = null,
+  }) {
+    return _then(_$ExpenseStateEmpty(
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
+      expenses: null == expenses
+          ? _value._expenses
+          : expenses // ignore: cast_nullable_to_non_nullable
+              as List<Expense>,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ExpenseStateEmpty implements ExpenseStateEmpty {
+  const _$ExpenseStateEmpty(
+      {required this.year,
+      required this.month,
+      final List<Expense> expenses = const [],
+      this.message = '',
+      this.error = ''})
+      : _expenses = expenses;
+
+  @override
+  final int year;
+  @override
+  final int month;
+  final List<Expense> _expenses;
+  @override
+  @JsonKey()
+  List<Expense> get expenses {
+    if (_expenses is EqualUnmodifiableListView) return _expenses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expenses);
+  }
+
+  @override
+  @JsonKey()
+  final String message;
+  @override
+  @JsonKey()
+  final String error;
+
+  @override
+  String toString() {
+    return 'ExpenseState.empty(year: $year, month: $month, expenses: $expenses, message: $message, error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ExpenseStateEmpty &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
+            const DeepCollectionEquality().equals(other._expenses, _expenses) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, year, month,
+      const DeepCollectionEquality().hash(_expenses), message, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ExpenseStateEmptyCopyWith<_$ExpenseStateEmpty> get copyWith =>
+      __$$ExpenseStateEmptyCopyWithImpl<_$ExpenseStateEmpty>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        loading,
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        loaded,
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        empty,
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        error,
+  }) {
+    return empty(year, month, expenses, message, this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        loading,
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        loaded,
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        error,
+  }) {
+    return empty?.call(year, month, expenses, message, this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        loading,
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        loaded,
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(year, month, expenses, message, this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ExpenseStateLoading value) loading,
+    required TResult Function(ExpenseStateLoaded value) loaded,
+    required TResult Function(ExpenseStateEmpty value) empty,
+    required TResult Function(ExpenseStateError value) error,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ExpenseStateLoading value)? loading,
+    TResult? Function(ExpenseStateLoaded value)? loaded,
+    TResult? Function(ExpenseStateEmpty value)? empty,
+    TResult? Function(ExpenseStateError value)? error,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ExpenseStateLoading value)? loading,
+    TResult Function(ExpenseStateLoaded value)? loaded,
+    TResult Function(ExpenseStateEmpty value)? empty,
+    TResult Function(ExpenseStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ExpenseStateEmpty implements ExpenseState {
+  const factory ExpenseStateEmpty(
+      {required final int year,
+      required final int month,
+      final List<Expense> expenses,
+      final String message,
+      final String error}) = _$ExpenseStateEmpty;
+
+  @override
+  int get year;
+  @override
+  int get month;
+  @override
+  List<Expense> get expenses;
+  @override
+  String get message;
+  @override
+  String get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$ExpenseStateEmptyCopyWith<_$ExpenseStateEmpty> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$ExpenseStateErrorCopyWith<$Res>
     implements $ExpenseStateCopyWith<$Res> {
   factory _$$ExpenseStateErrorCopyWith(
@@ -898,8 +886,8 @@ abstract class _$$ExpenseStateErrorCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DateTime currentDate,
-      String monthYearTitle,
+      {int year,
+      int month,
       List<Expense> expenses,
       String message,
       String error});
@@ -916,21 +904,21 @@ class __$$ExpenseStateErrorCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentDate = null,
-    Object? monthYearTitle = null,
+    Object? year = null,
+    Object? month = null,
     Object? expenses = null,
     Object? message = null,
     Object? error = null,
   }) {
     return _then(_$ExpenseStateError(
-      currentDate: null == currentDate
-          ? _value.currentDate
-          : currentDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      monthYearTitle: null == monthYearTitle
-          ? _value.monthYearTitle
-          : monthYearTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       expenses: null == expenses
           ? _value._expenses
           : expenses // ignore: cast_nullable_to_non_nullable
@@ -951,17 +939,17 @@ class __$$ExpenseStateErrorCopyWithImpl<$Res>
 
 class _$ExpenseStateError implements ExpenseStateError {
   const _$ExpenseStateError(
-      {required this.currentDate,
-      required this.monthYearTitle,
+      {required this.year,
+      required this.month,
       final List<Expense> expenses = const [],
       this.message = '',
       required this.error})
       : _expenses = expenses;
 
   @override
-  final DateTime currentDate;
+  final int year;
   @override
-  final String monthYearTitle;
+  final int month;
   final List<Expense> _expenses;
   @override
   @JsonKey()
@@ -979,7 +967,7 @@ class _$ExpenseStateError implements ExpenseStateError {
 
   @override
   String toString() {
-    return 'ExpenseState.error(currentDate: $currentDate, monthYearTitle: $monthYearTitle, expenses: $expenses, message: $message, error: $error)';
+    return 'ExpenseState.error(year: $year, month: $month, expenses: $expenses, message: $message, error: $error)';
   }
 
   @override
@@ -987,17 +975,15 @@ class _$ExpenseStateError implements ExpenseStateError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExpenseStateError &&
-            (identical(other.currentDate, currentDate) ||
-                other.currentDate == currentDate) &&
-            (identical(other.monthYearTitle, monthYearTitle) ||
-                other.monthYearTitle == monthYearTitle) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
             const DeepCollectionEquality().equals(other._expenses, _expenses) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentDate, monthYearTitle,
+  int get hashCode => Object.hash(runtimeType, year, month,
       const DeepCollectionEquality().hash(_expenses), message, error);
 
   @JsonKey(ignore: true)
@@ -1009,61 +995,60 @@ class _$ExpenseStateError implements ExpenseStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
-        initial,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loading,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         loaded,
-    required TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
+        empty,
+    required TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)
         error,
   }) {
-    return error(currentDate, monthYearTitle, expenses, message, this.error);
+    return error(year, month, expenses, message, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult? Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult? Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
   }) {
-    return error?.call(
-        currentDate, monthYearTitle, expenses, message, this.error);
+    return error?.call(year, month, expenses, message, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
-        initial,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loading,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         loaded,
-    TResult Function(DateTime currentDate, String monthYearTitle,
-            List<Expense> expenses, String message, String error)?
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
+        empty,
+    TResult Function(int year, int month, List<Expense> expenses,
+            String message, String error)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(currentDate, monthYearTitle, expenses, message, this.error);
+      return error(year, month, expenses, message, this.error);
     }
     return orElse();
   }
@@ -1071,9 +1056,9 @@ class _$ExpenseStateError implements ExpenseStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExpenseStateInitial value) initial,
     required TResult Function(ExpenseStateLoading value) loading,
     required TResult Function(ExpenseStateLoaded value) loaded,
+    required TResult Function(ExpenseStateEmpty value) empty,
     required TResult Function(ExpenseStateError value) error,
   }) {
     return error(this);
@@ -1082,9 +1067,9 @@ class _$ExpenseStateError implements ExpenseStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExpenseStateInitial value)? initial,
     TResult? Function(ExpenseStateLoading value)? loading,
     TResult? Function(ExpenseStateLoaded value)? loaded,
+    TResult? Function(ExpenseStateEmpty value)? empty,
     TResult? Function(ExpenseStateError value)? error,
   }) {
     return error?.call(this);
@@ -1093,9 +1078,9 @@ class _$ExpenseStateError implements ExpenseStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExpenseStateInitial value)? initial,
     TResult Function(ExpenseStateLoading value)? loading,
     TResult Function(ExpenseStateLoaded value)? loaded,
+    TResult Function(ExpenseStateEmpty value)? empty,
     TResult Function(ExpenseStateError value)? error,
     required TResult orElse(),
   }) {
@@ -1108,16 +1093,16 @@ class _$ExpenseStateError implements ExpenseStateError {
 
 abstract class ExpenseStateError implements ExpenseState {
   const factory ExpenseStateError(
-      {required final DateTime currentDate,
-      required final String monthYearTitle,
+      {required final int year,
+      required final int month,
       final List<Expense> expenses,
       final String message,
       required final String error}) = _$ExpenseStateError;
 
   @override
-  DateTime get currentDate;
+  int get year;
   @override
-  String get monthYearTitle;
+  int get month;
   @override
   List<Expense> get expenses;
   @override

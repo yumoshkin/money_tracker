@@ -17,70 +17,53 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CategoryState {
   List<Category> get categories => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        initial,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loading,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        error,
+    required TResult Function(List<Category> categories, String error) loading,
+    required TResult Function(List<Category> categories, String error) loaded,
+    required TResult Function(List<Category> categories, String error) empty,
+    required TResult Function(List<Category> categories, String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult? Function(List<Category> categories, String message, String error)?
-        error,
+    TResult? Function(List<Category> categories, String error)? loading,
+    TResult? Function(List<Category> categories, String error)? loaded,
+    TResult? Function(List<Category> categories, String error)? empty,
+    TResult? Function(List<Category> categories, String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult Function(List<Category> categories, String message, String error)?
-        error,
+    TResult Function(List<Category> categories, String error)? loading,
+    TResult Function(List<Category> categories, String error)? loaded,
+    TResult Function(List<Category> categories, String error)? empty,
+    TResult Function(List<Category> categories, String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CategoryStateInitial value) initial,
     required TResult Function(CategoryStateLoading value) loading,
     required TResult Function(CategoryStateLoaded value) loaded,
+    required TResult Function(CategoryStateEmpty value) empty,
     required TResult Function(CategoryStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CategoryStateInitial value)? initial,
     TResult? Function(CategoryStateLoading value)? loading,
     TResult? Function(CategoryStateLoaded value)? loaded,
+    TResult? Function(CategoryStateEmpty value)? empty,
     TResult? Function(CategoryStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CategoryStateInitial value)? initial,
     TResult Function(CategoryStateLoading value)? loading,
     TResult Function(CategoryStateLoaded value)? loaded,
+    TResult Function(CategoryStateEmpty value)? empty,
     TResult Function(CategoryStateError value)? error,
     required TResult orElse(),
   }) =>
@@ -97,7 +80,7 @@ abstract class $CategoryStateCopyWith<$Res> {
           CategoryState value, $Res Function(CategoryState) then) =
       _$CategoryStateCopyWithImpl<$Res, CategoryState>;
   @useResult
-  $Res call({List<Category> categories, String message, String error});
+  $Res call({List<Category> categories, String error});
 }
 
 /// @nodoc
@@ -114,7 +97,6 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
   @override
   $Res call({
     Object? categories = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_value.copyWith(
@@ -122,220 +104,12 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
-}
-
-/// @nodoc
-abstract class _$$CategoryStateInitialCopyWith<$Res>
-    implements $CategoryStateCopyWith<$Res> {
-  factory _$$CategoryStateInitialCopyWith(_$CategoryStateInitial value,
-          $Res Function(_$CategoryStateInitial) then) =
-      __$$CategoryStateInitialCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Category> categories, String message, String error});
-}
-
-/// @nodoc
-class __$$CategoryStateInitialCopyWithImpl<$Res>
-    extends _$CategoryStateCopyWithImpl<$Res, _$CategoryStateInitial>
-    implements _$$CategoryStateInitialCopyWith<$Res> {
-  __$$CategoryStateInitialCopyWithImpl(_$CategoryStateInitial _value,
-      $Res Function(_$CategoryStateInitial) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? categories = null,
-    Object? message = null,
-    Object? error = null,
-  }) {
-    return _then(_$CategoryStateInitial(
-      categories: null == categories
-          ? _value._categories
-          : categories // ignore: cast_nullable_to_non_nullable
-              as List<Category>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CategoryStateInitial implements CategoryStateInitial {
-  const _$CategoryStateInitial(
-      {final List<Category> categories = const [],
-      this.message = '',
-      this.error = ''})
-      : _categories = categories;
-
-  final List<Category> _categories;
-  @override
-  @JsonKey()
-  List<Category> get categories {
-    if (_categories is EqualUnmodifiableListView) return _categories;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categories);
-  }
-
-  @override
-  @JsonKey()
-  final String message;
-  @override
-  @JsonKey()
-  final String error;
-
-  @override
-  String toString() {
-    return 'CategoryState.initial(categories: $categories, message: $message, error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CategoryStateInitial &&
-            const DeepCollectionEquality()
-                .equals(other._categories, _categories) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_categories), message, error);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CategoryStateInitialCopyWith<_$CategoryStateInitial> get copyWith =>
-      __$$CategoryStateInitialCopyWithImpl<_$CategoryStateInitial>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        initial,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loading,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        error,
-  }) {
-    return initial(categories, message, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult? Function(List<Category> categories, String message, String error)?
-        error,
-  }) {
-    return initial?.call(categories, message, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult Function(List<Category> categories, String message, String error)?
-        error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(categories, message, this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CategoryStateInitial value) initial,
-    required TResult Function(CategoryStateLoading value) loading,
-    required TResult Function(CategoryStateLoaded value) loaded,
-    required TResult Function(CategoryStateError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CategoryStateInitial value)? initial,
-    TResult? Function(CategoryStateLoading value)? loading,
-    TResult? Function(CategoryStateLoaded value)? loaded,
-    TResult? Function(CategoryStateError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CategoryStateInitial value)? initial,
-    TResult Function(CategoryStateLoading value)? loading,
-    TResult Function(CategoryStateLoaded value)? loaded,
-    TResult Function(CategoryStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CategoryStateInitial implements CategoryState {
-  const factory CategoryStateInitial(
-      {final List<Category> categories,
-      final String message,
-      final String error}) = _$CategoryStateInitial;
-
-  @override
-  List<Category> get categories;
-  @override
-  String get message;
-  @override
-  String get error;
-  @override
-  @JsonKey(ignore: true)
-  _$$CategoryStateInitialCopyWith<_$CategoryStateInitial> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -346,7 +120,7 @@ abstract class _$$CategoryStateLoadingCopyWith<$Res>
       __$$CategoryStateLoadingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Category> categories, String message, String error});
+  $Res call({List<Category> categories, String error});
 }
 
 /// @nodoc
@@ -361,7 +135,6 @@ class __$$CategoryStateLoadingCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categories = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_$CategoryStateLoading(
@@ -369,10 +142,6 @@ class __$$CategoryStateLoadingCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -385,9 +154,7 @@ class __$$CategoryStateLoadingCopyWithImpl<$Res>
 
 class _$CategoryStateLoading implements CategoryStateLoading {
   const _$CategoryStateLoading(
-      {final List<Category> categories = const [],
-      this.message = '',
-      this.error = ''})
+      {final List<Category> categories = const [], this.error = ''})
       : _categories = categories;
 
   final List<Category> _categories;
@@ -401,14 +168,11 @@ class _$CategoryStateLoading implements CategoryStateLoading {
 
   @override
   @JsonKey()
-  final String message;
-  @override
-  @JsonKey()
   final String error;
 
   @override
   String toString() {
-    return 'CategoryState.loading(categories: $categories, message: $message, error: $error)';
+    return 'CategoryState.loading(categories: $categories, error: $error)';
   }
 
   @override
@@ -418,13 +182,12 @@ class _$CategoryStateLoading implements CategoryStateLoading {
             other is _$CategoryStateLoading &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_categories), message, error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories), error);
 
   @JsonKey(ignore: true)
   @override
@@ -436,52 +199,36 @@ class _$CategoryStateLoading implements CategoryStateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        initial,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loading,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        error,
+    required TResult Function(List<Category> categories, String error) loading,
+    required TResult Function(List<Category> categories, String error) loaded,
+    required TResult Function(List<Category> categories, String error) empty,
+    required TResult Function(List<Category> categories, String error) error,
   }) {
-    return loading(categories, message, this.error);
+    return loading(categories, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult? Function(List<Category> categories, String message, String error)?
-        error,
+    TResult? Function(List<Category> categories, String error)? loading,
+    TResult? Function(List<Category> categories, String error)? loaded,
+    TResult? Function(List<Category> categories, String error)? empty,
+    TResult? Function(List<Category> categories, String error)? error,
   }) {
-    return loading?.call(categories, message, this.error);
+    return loading?.call(categories, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult Function(List<Category> categories, String message, String error)?
-        error,
+    TResult Function(List<Category> categories, String error)? loading,
+    TResult Function(List<Category> categories, String error)? loaded,
+    TResult Function(List<Category> categories, String error)? empty,
+    TResult Function(List<Category> categories, String error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(categories, message, this.error);
+      return loading(categories, this.error);
     }
     return orElse();
   }
@@ -489,9 +236,9 @@ class _$CategoryStateLoading implements CategoryStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CategoryStateInitial value) initial,
     required TResult Function(CategoryStateLoading value) loading,
     required TResult Function(CategoryStateLoaded value) loaded,
+    required TResult Function(CategoryStateEmpty value) empty,
     required TResult Function(CategoryStateError value) error,
   }) {
     return loading(this);
@@ -500,9 +247,9 @@ class _$CategoryStateLoading implements CategoryStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CategoryStateInitial value)? initial,
     TResult? Function(CategoryStateLoading value)? loading,
     TResult? Function(CategoryStateLoaded value)? loaded,
+    TResult? Function(CategoryStateEmpty value)? empty,
     TResult? Function(CategoryStateError value)? error,
   }) {
     return loading?.call(this);
@@ -511,9 +258,9 @@ class _$CategoryStateLoading implements CategoryStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CategoryStateInitial value)? initial,
     TResult Function(CategoryStateLoading value)? loading,
     TResult Function(CategoryStateLoaded value)? loaded,
+    TResult Function(CategoryStateEmpty value)? empty,
     TResult Function(CategoryStateError value)? error,
     required TResult orElse(),
   }) {
@@ -527,13 +274,10 @@ class _$CategoryStateLoading implements CategoryStateLoading {
 abstract class CategoryStateLoading implements CategoryState {
   const factory CategoryStateLoading(
       {final List<Category> categories,
-      final String message,
       final String error}) = _$CategoryStateLoading;
 
   @override
   List<Category> get categories;
-  @override
-  String get message;
   @override
   String get error;
   @override
@@ -550,7 +294,7 @@ abstract class _$$CategoryStateLoadedCopyWith<$Res>
       __$$CategoryStateLoadedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Category> categories, String message, String error});
+  $Res call({List<Category> categories, String error});
 }
 
 /// @nodoc
@@ -565,7 +309,6 @@ class __$$CategoryStateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categories = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_$CategoryStateLoaded(
@@ -573,10 +316,6 @@ class __$$CategoryStateLoadedCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -589,9 +328,7 @@ class __$$CategoryStateLoadedCopyWithImpl<$Res>
 
 class _$CategoryStateLoaded implements CategoryStateLoaded {
   const _$CategoryStateLoaded(
-      {required final List<Category> categories,
-      this.message = '',
-      this.error = ''})
+      {required final List<Category> categories, this.error = ''})
       : _categories = categories;
 
   final List<Category> _categories;
@@ -604,14 +341,11 @@ class _$CategoryStateLoaded implements CategoryStateLoaded {
 
   @override
   @JsonKey()
-  final String message;
-  @override
-  @JsonKey()
   final String error;
 
   @override
   String toString() {
-    return 'CategoryState.loaded(categories: $categories, message: $message, error: $error)';
+    return 'CategoryState.loaded(categories: $categories, error: $error)';
   }
 
   @override
@@ -621,13 +355,12 @@ class _$CategoryStateLoaded implements CategoryStateLoaded {
             other is _$CategoryStateLoaded &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_categories), message, error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories), error);
 
   @JsonKey(ignore: true)
   @override
@@ -639,52 +372,36 @@ class _$CategoryStateLoaded implements CategoryStateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        initial,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loading,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        error,
+    required TResult Function(List<Category> categories, String error) loading,
+    required TResult Function(List<Category> categories, String error) loaded,
+    required TResult Function(List<Category> categories, String error) empty,
+    required TResult Function(List<Category> categories, String error) error,
   }) {
-    return loaded(categories, message, this.error);
+    return loaded(categories, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult? Function(List<Category> categories, String message, String error)?
-        error,
+    TResult? Function(List<Category> categories, String error)? loading,
+    TResult? Function(List<Category> categories, String error)? loaded,
+    TResult? Function(List<Category> categories, String error)? empty,
+    TResult? Function(List<Category> categories, String error)? error,
   }) {
-    return loaded?.call(categories, message, this.error);
+    return loaded?.call(categories, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult Function(List<Category> categories, String message, String error)?
-        error,
+    TResult Function(List<Category> categories, String error)? loading,
+    TResult Function(List<Category> categories, String error)? loaded,
+    TResult Function(List<Category> categories, String error)? empty,
+    TResult Function(List<Category> categories, String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(categories, message, this.error);
+      return loaded(categories, this.error);
     }
     return orElse();
   }
@@ -692,9 +409,9 @@ class _$CategoryStateLoaded implements CategoryStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CategoryStateInitial value) initial,
     required TResult Function(CategoryStateLoading value) loading,
     required TResult Function(CategoryStateLoaded value) loaded,
+    required TResult Function(CategoryStateEmpty value) empty,
     required TResult Function(CategoryStateError value) error,
   }) {
     return loaded(this);
@@ -703,9 +420,9 @@ class _$CategoryStateLoaded implements CategoryStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CategoryStateInitial value)? initial,
     TResult? Function(CategoryStateLoading value)? loading,
     TResult? Function(CategoryStateLoaded value)? loaded,
+    TResult? Function(CategoryStateEmpty value)? empty,
     TResult? Function(CategoryStateError value)? error,
   }) {
     return loaded?.call(this);
@@ -714,9 +431,9 @@ class _$CategoryStateLoaded implements CategoryStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CategoryStateInitial value)? initial,
     TResult Function(CategoryStateLoading value)? loading,
     TResult Function(CategoryStateLoaded value)? loaded,
+    TResult Function(CategoryStateEmpty value)? empty,
     TResult Function(CategoryStateError value)? error,
     required TResult orElse(),
   }) {
@@ -730,18 +447,189 @@ class _$CategoryStateLoaded implements CategoryStateLoaded {
 abstract class CategoryStateLoaded implements CategoryState {
   const factory CategoryStateLoaded(
       {required final List<Category> categories,
-      final String message,
       final String error}) = _$CategoryStateLoaded;
 
   @override
   List<Category> get categories;
   @override
-  String get message;
-  @override
   String get error;
   @override
   @JsonKey(ignore: true)
   _$$CategoryStateLoadedCopyWith<_$CategoryStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CategoryStateEmptyCopyWith<$Res>
+    implements $CategoryStateCopyWith<$Res> {
+  factory _$$CategoryStateEmptyCopyWith(_$CategoryStateEmpty value,
+          $Res Function(_$CategoryStateEmpty) then) =
+      __$$CategoryStateEmptyCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Category> categories, String error});
+}
+
+/// @nodoc
+class __$$CategoryStateEmptyCopyWithImpl<$Res>
+    extends _$CategoryStateCopyWithImpl<$Res, _$CategoryStateEmpty>
+    implements _$$CategoryStateEmptyCopyWith<$Res> {
+  __$$CategoryStateEmptyCopyWithImpl(
+      _$CategoryStateEmpty _value, $Res Function(_$CategoryStateEmpty) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categories = null,
+    Object? error = null,
+  }) {
+    return _then(_$CategoryStateEmpty(
+      categories: null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<Category>,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CategoryStateEmpty implements CategoryStateEmpty {
+  const _$CategoryStateEmpty(
+      {final List<Category> categories = const [], this.error = ''})
+      : _categories = categories;
+
+  final List<Category> _categories;
+  @override
+  @JsonKey()
+  List<Category> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
+
+  @override
+  @JsonKey()
+  final String error;
+
+  @override
+  String toString() {
+    return 'CategoryState.empty(categories: $categories, error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CategoryStateEmpty &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories), error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CategoryStateEmptyCopyWith<_$CategoryStateEmpty> get copyWith =>
+      __$$CategoryStateEmptyCopyWithImpl<_$CategoryStateEmpty>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Category> categories, String error) loading,
+    required TResult Function(List<Category> categories, String error) loaded,
+    required TResult Function(List<Category> categories, String error) empty,
+    required TResult Function(List<Category> categories, String error) error,
+  }) {
+    return empty(categories, this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Category> categories, String error)? loading,
+    TResult? Function(List<Category> categories, String error)? loaded,
+    TResult? Function(List<Category> categories, String error)? empty,
+    TResult? Function(List<Category> categories, String error)? error,
+  }) {
+    return empty?.call(categories, this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Category> categories, String error)? loading,
+    TResult Function(List<Category> categories, String error)? loaded,
+    TResult Function(List<Category> categories, String error)? empty,
+    TResult Function(List<Category> categories, String error)? error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(categories, this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CategoryStateLoading value) loading,
+    required TResult Function(CategoryStateLoaded value) loaded,
+    required TResult Function(CategoryStateEmpty value) empty,
+    required TResult Function(CategoryStateError value) error,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CategoryStateLoading value)? loading,
+    TResult? Function(CategoryStateLoaded value)? loaded,
+    TResult? Function(CategoryStateEmpty value)? empty,
+    TResult? Function(CategoryStateError value)? error,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CategoryStateLoading value)? loading,
+    TResult Function(CategoryStateLoaded value)? loaded,
+    TResult Function(CategoryStateEmpty value)? empty,
+    TResult Function(CategoryStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CategoryStateEmpty implements CategoryState {
+  const factory CategoryStateEmpty(
+      {final List<Category> categories,
+      final String error}) = _$CategoryStateEmpty;
+
+  @override
+  List<Category> get categories;
+  @override
+  String get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$CategoryStateEmptyCopyWith<_$CategoryStateEmpty> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -753,7 +641,7 @@ abstract class _$$CategoryStateErrorCopyWith<$Res>
       __$$CategoryStateErrorCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Category> categories, String message, String error});
+  $Res call({List<Category> categories, String error});
 }
 
 /// @nodoc
@@ -768,7 +656,6 @@ class __$$CategoryStateErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categories = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_$CategoryStateError(
@@ -776,10 +663,6 @@ class __$$CategoryStateErrorCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -792,9 +675,7 @@ class __$$CategoryStateErrorCopyWithImpl<$Res>
 
 class _$CategoryStateError implements CategoryStateError {
   const _$CategoryStateError(
-      {final List<Category> categories = const [],
-      this.message = '',
-      required this.error})
+      {final List<Category> categories = const [], required this.error})
       : _categories = categories;
 
   final List<Category> _categories;
@@ -807,14 +688,11 @@ class _$CategoryStateError implements CategoryStateError {
   }
 
   @override
-  @JsonKey()
-  final String message;
-  @override
   final String error;
 
   @override
   String toString() {
-    return 'CategoryState.error(categories: $categories, message: $message, error: $error)';
+    return 'CategoryState.error(categories: $categories, error: $error)';
   }
 
   @override
@@ -824,13 +702,12 @@ class _$CategoryStateError implements CategoryStateError {
             other is _$CategoryStateError &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_categories), message, error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories), error);
 
   @JsonKey(ignore: true)
   @override
@@ -842,52 +719,36 @@ class _$CategoryStateError implements CategoryStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        initial,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loading,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Category> categories, String message, String error)
-        error,
+    required TResult Function(List<Category> categories, String error) loading,
+    required TResult Function(List<Category> categories, String error) loaded,
+    required TResult Function(List<Category> categories, String error) empty,
+    required TResult Function(List<Category> categories, String error) error,
   }) {
-    return error(categories, message, this.error);
+    return error(categories, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult? Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult? Function(List<Category> categories, String message, String error)?
-        error,
+    TResult? Function(List<Category> categories, String error)? loading,
+    TResult? Function(List<Category> categories, String error)? loaded,
+    TResult? Function(List<Category> categories, String error)? empty,
+    TResult? Function(List<Category> categories, String error)? error,
   }) {
-    return error?.call(categories, message, this.error);
+    return error?.call(categories, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Category> categories, String message, String error)?
-        initial,
-    TResult Function(List<Category> categories, String message, String error)?
-        loading,
-    TResult Function(List<Category> categories, String message, String error)?
-        loaded,
-    TResult Function(List<Category> categories, String message, String error)?
-        error,
+    TResult Function(List<Category> categories, String error)? loading,
+    TResult Function(List<Category> categories, String error)? loaded,
+    TResult Function(List<Category> categories, String error)? empty,
+    TResult Function(List<Category> categories, String error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(categories, message, this.error);
+      return error(categories, this.error);
     }
     return orElse();
   }
@@ -895,9 +756,9 @@ class _$CategoryStateError implements CategoryStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CategoryStateInitial value) initial,
     required TResult Function(CategoryStateLoading value) loading,
     required TResult Function(CategoryStateLoaded value) loaded,
+    required TResult Function(CategoryStateEmpty value) empty,
     required TResult Function(CategoryStateError value) error,
   }) {
     return error(this);
@@ -906,9 +767,9 @@ class _$CategoryStateError implements CategoryStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CategoryStateInitial value)? initial,
     TResult? Function(CategoryStateLoading value)? loading,
     TResult? Function(CategoryStateLoaded value)? loaded,
+    TResult? Function(CategoryStateEmpty value)? empty,
     TResult? Function(CategoryStateError value)? error,
   }) {
     return error?.call(this);
@@ -917,9 +778,9 @@ class _$CategoryStateError implements CategoryStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CategoryStateInitial value)? initial,
     TResult Function(CategoryStateLoading value)? loading,
     TResult Function(CategoryStateLoaded value)? loaded,
+    TResult Function(CategoryStateEmpty value)? empty,
     TResult Function(CategoryStateError value)? error,
     required TResult orElse(),
   }) {
@@ -933,13 +794,10 @@ class _$CategoryStateError implements CategoryStateError {
 abstract class CategoryStateError implements CategoryState {
   const factory CategoryStateError(
       {final List<Category> categories,
-      final String message,
       required final String error}) = _$CategoryStateError;
 
   @override
   List<Category> get categories;
-  @override
-  String get message;
   @override
   String get error;
   @override

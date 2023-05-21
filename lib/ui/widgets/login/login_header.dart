@@ -9,7 +9,7 @@ class LoginHeader extends StatelessWidget {
       children: [
         Image.asset('assets/images/folder.png'),
         const SizedBox(height: 6),
-        Text(
+        const Text(
           'Учёт расходов',
           style: TextStyle(
             fontSize: 24,
@@ -17,7 +17,7 @@ class LoginHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Text(
+        const Text(
           'Ваша история расходов\nвсегда под рукой',
           textAlign: TextAlign.center,
           style: TextStyle(

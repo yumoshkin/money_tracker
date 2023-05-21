@@ -17,69 +17,53 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RecordState {
   List<Record> get records => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Record> records, String message, String error)
-        initial,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loading,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        error,
+    required TResult Function(List<Record> records, String error) loading,
+    required TResult Function(List<Record> records, String error) loaded,
+    required TResult Function(List<Record> records, String error) empty,
+    required TResult Function(List<Record> records, String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Record> records, String message, String error)?
-        initial,
-    TResult? Function(List<Record> records, String message, String error)?
-        loading,
-    TResult? Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult? Function(List<Record> records, String message, String error)?
-        error,
+    TResult? Function(List<Record> records, String error)? loading,
+    TResult? Function(List<Record> records, String error)? loaded,
+    TResult? Function(List<Record> records, String error)? empty,
+    TResult? Function(List<Record> records, String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Record> records, String message, String error)?
-        initial,
-    TResult Function(List<Record> records, String message, String error)?
-        loading,
-    TResult Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult Function(List<Record> records, String message, String error)? error,
+    TResult Function(List<Record> records, String error)? loading,
+    TResult Function(List<Record> records, String error)? loaded,
+    TResult Function(List<Record> records, String error)? empty,
+    TResult Function(List<Record> records, String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordStateInitial value) initial,
     required TResult Function(RecordStateLoading value) loading,
     required TResult Function(RecordStateLoaded value) loaded,
+    required TResult Function(RecordStateEmpty value) empty,
     required TResult Function(RecordStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecordStateInitial value)? initial,
     TResult? Function(RecordStateLoading value)? loading,
     TResult? Function(RecordStateLoaded value)? loaded,
+    TResult? Function(RecordStateEmpty value)? empty,
     TResult? Function(RecordStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordStateInitial value)? initial,
     TResult Function(RecordStateLoading value)? loading,
     TResult Function(RecordStateLoaded value)? loaded,
+    TResult Function(RecordStateEmpty value)? empty,
     TResult Function(RecordStateError value)? error,
     required TResult orElse(),
   }) =>
@@ -96,7 +80,7 @@ abstract class $RecordStateCopyWith<$Res> {
           RecordState value, $Res Function(RecordState) then) =
       _$RecordStateCopyWithImpl<$Res, RecordState>;
   @useResult
-  $Res call({List<Record> records, String message, String error});
+  $Res call({List<Record> records, String error});
 }
 
 /// @nodoc
@@ -113,7 +97,6 @@ class _$RecordStateCopyWithImpl<$Res, $Val extends RecordState>
   @override
   $Res call({
     Object? records = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_value.copyWith(
@@ -121,218 +104,12 @@ class _$RecordStateCopyWithImpl<$Res, $Val extends RecordState>
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
               as List<Record>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
-}
-
-/// @nodoc
-abstract class _$$RecordStateInitialCopyWith<$Res>
-    implements $RecordStateCopyWith<$Res> {
-  factory _$$RecordStateInitialCopyWith(_$RecordStateInitial value,
-          $Res Function(_$RecordStateInitial) then) =
-      __$$RecordStateInitialCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Record> records, String message, String error});
-}
-
-/// @nodoc
-class __$$RecordStateInitialCopyWithImpl<$Res>
-    extends _$RecordStateCopyWithImpl<$Res, _$RecordStateInitial>
-    implements _$$RecordStateInitialCopyWith<$Res> {
-  __$$RecordStateInitialCopyWithImpl(
-      _$RecordStateInitial _value, $Res Function(_$RecordStateInitial) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? records = null,
-    Object? message = null,
-    Object? error = null,
-  }) {
-    return _then(_$RecordStateInitial(
-      records: null == records
-          ? _value._records
-          : records // ignore: cast_nullable_to_non_nullable
-              as List<Record>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RecordStateInitial implements RecordStateInitial {
-  const _$RecordStateInitial(
-      {final List<Record> records = const [],
-      this.message = '',
-      this.error = ''})
-      : _records = records;
-
-  final List<Record> _records;
-  @override
-  @JsonKey()
-  List<Record> get records {
-    if (_records is EqualUnmodifiableListView) return _records;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_records);
-  }
-
-  @override
-  @JsonKey()
-  final String message;
-  @override
-  @JsonKey()
-  final String error;
-
-  @override
-  String toString() {
-    return 'RecordState.initial(records: $records, message: $message, error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RecordStateInitial &&
-            const DeepCollectionEquality().equals(other._records, _records) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_records), message, error);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RecordStateInitialCopyWith<_$RecordStateInitial> get copyWith =>
-      __$$RecordStateInitialCopyWithImpl<_$RecordStateInitial>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Record> records, String message, String error)
-        initial,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loading,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        error,
-  }) {
-    return initial(records, message, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Record> records, String message, String error)?
-        initial,
-    TResult? Function(List<Record> records, String message, String error)?
-        loading,
-    TResult? Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult? Function(List<Record> records, String message, String error)?
-        error,
-  }) {
-    return initial?.call(records, message, this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Record> records, String message, String error)?
-        initial,
-    TResult Function(List<Record> records, String message, String error)?
-        loading,
-    TResult Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult Function(List<Record> records, String message, String error)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(records, message, this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RecordStateInitial value) initial,
-    required TResult Function(RecordStateLoading value) loading,
-    required TResult Function(RecordStateLoaded value) loaded,
-    required TResult Function(RecordStateError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecordStateInitial value)? initial,
-    TResult? Function(RecordStateLoading value)? loading,
-    TResult? Function(RecordStateLoaded value)? loaded,
-    TResult? Function(RecordStateError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordStateInitial value)? initial,
-    TResult Function(RecordStateLoading value)? loading,
-    TResult Function(RecordStateLoaded value)? loaded,
-    TResult Function(RecordStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class RecordStateInitial implements RecordState {
-  const factory RecordStateInitial(
-      {final List<Record> records,
-      final String message,
-      final String error}) = _$RecordStateInitial;
-
-  @override
-  List<Record> get records;
-  @override
-  String get message;
-  @override
-  String get error;
-  @override
-  @JsonKey(ignore: true)
-  _$$RecordStateInitialCopyWith<_$RecordStateInitial> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -343,7 +120,7 @@ abstract class _$$RecordStateLoadingCopyWith<$Res>
       __$$RecordStateLoadingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Record> records, String message, String error});
+  $Res call({List<Record> records, String error});
 }
 
 /// @nodoc
@@ -358,7 +135,6 @@ class __$$RecordStateLoadingCopyWithImpl<$Res>
   @override
   $Res call({
     Object? records = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_$RecordStateLoading(
@@ -366,10 +142,6 @@ class __$$RecordStateLoadingCopyWithImpl<$Res>
           ? _value._records
           : records // ignore: cast_nullable_to_non_nullable
               as List<Record>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -382,9 +154,7 @@ class __$$RecordStateLoadingCopyWithImpl<$Res>
 
 class _$RecordStateLoading implements RecordStateLoading {
   const _$RecordStateLoading(
-      {final List<Record> records = const [],
-      this.message = '',
-      this.error = ''})
+      {final List<Record> records = const [], this.error = ''})
       : _records = records;
 
   final List<Record> _records;
@@ -398,14 +168,11 @@ class _$RecordStateLoading implements RecordStateLoading {
 
   @override
   @JsonKey()
-  final String message;
-  @override
-  @JsonKey()
   final String error;
 
   @override
   String toString() {
-    return 'RecordState.loading(records: $records, message: $message, error: $error)';
+    return 'RecordState.loading(records: $records, error: $error)';
   }
 
   @override
@@ -414,13 +181,12 @@ class _$RecordStateLoading implements RecordStateLoading {
         (other.runtimeType == runtimeType &&
             other is _$RecordStateLoading &&
             const DeepCollectionEquality().equals(other._records, _records) &&
-            (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_records), message, error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_records), error);
 
   @JsonKey(ignore: true)
   @override
@@ -432,51 +198,36 @@ class _$RecordStateLoading implements RecordStateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Record> records, String message, String error)
-        initial,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loading,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        error,
+    required TResult Function(List<Record> records, String error) loading,
+    required TResult Function(List<Record> records, String error) loaded,
+    required TResult Function(List<Record> records, String error) empty,
+    required TResult Function(List<Record> records, String error) error,
   }) {
-    return loading(records, message, this.error);
+    return loading(records, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Record> records, String message, String error)?
-        initial,
-    TResult? Function(List<Record> records, String message, String error)?
-        loading,
-    TResult? Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult? Function(List<Record> records, String message, String error)?
-        error,
+    TResult? Function(List<Record> records, String error)? loading,
+    TResult? Function(List<Record> records, String error)? loaded,
+    TResult? Function(List<Record> records, String error)? empty,
+    TResult? Function(List<Record> records, String error)? error,
   }) {
-    return loading?.call(records, message, this.error);
+    return loading?.call(records, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Record> records, String message, String error)?
-        initial,
-    TResult Function(List<Record> records, String message, String error)?
-        loading,
-    TResult Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult Function(List<Record> records, String message, String error)? error,
+    TResult Function(List<Record> records, String error)? loading,
+    TResult Function(List<Record> records, String error)? loaded,
+    TResult Function(List<Record> records, String error)? empty,
+    TResult Function(List<Record> records, String error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(records, message, this.error);
+      return loading(records, this.error);
     }
     return orElse();
   }
@@ -484,9 +235,9 @@ class _$RecordStateLoading implements RecordStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordStateInitial value) initial,
     required TResult Function(RecordStateLoading value) loading,
     required TResult Function(RecordStateLoaded value) loaded,
+    required TResult Function(RecordStateEmpty value) empty,
     required TResult Function(RecordStateError value) error,
   }) {
     return loading(this);
@@ -495,9 +246,9 @@ class _$RecordStateLoading implements RecordStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecordStateInitial value)? initial,
     TResult? Function(RecordStateLoading value)? loading,
     TResult? Function(RecordStateLoaded value)? loaded,
+    TResult? Function(RecordStateEmpty value)? empty,
     TResult? Function(RecordStateError value)? error,
   }) {
     return loading?.call(this);
@@ -506,9 +257,9 @@ class _$RecordStateLoading implements RecordStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordStateInitial value)? initial,
     TResult Function(RecordStateLoading value)? loading,
     TResult Function(RecordStateLoaded value)? loaded,
+    TResult Function(RecordStateEmpty value)? empty,
     TResult Function(RecordStateError value)? error,
     required TResult orElse(),
   }) {
@@ -521,14 +272,10 @@ class _$RecordStateLoading implements RecordStateLoading {
 
 abstract class RecordStateLoading implements RecordState {
   const factory RecordStateLoading(
-      {final List<Record> records,
-      final String message,
-      final String error}) = _$RecordStateLoading;
+      {final List<Record> records, final String error}) = _$RecordStateLoading;
 
   @override
   List<Record> get records;
-  @override
-  String get message;
   @override
   String get error;
   @override
@@ -545,7 +292,7 @@ abstract class _$$RecordStateLoadedCopyWith<$Res>
       __$$RecordStateLoadedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Record> records, String message, String error});
+  $Res call({List<Record> records, String error});
 }
 
 /// @nodoc
@@ -560,7 +307,6 @@ class __$$RecordStateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? records = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_$RecordStateLoaded(
@@ -568,10 +314,6 @@ class __$$RecordStateLoadedCopyWithImpl<$Res>
           ? _value._records
           : records // ignore: cast_nullable_to_non_nullable
               as List<Record>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -584,7 +326,7 @@ class __$$RecordStateLoadedCopyWithImpl<$Res>
 
 class _$RecordStateLoaded implements RecordStateLoaded {
   const _$RecordStateLoaded(
-      {required final List<Record> records, this.message = '', this.error = ''})
+      {required final List<Record> records, this.error = ''})
       : _records = records;
 
   final List<Record> _records;
@@ -597,14 +339,11 @@ class _$RecordStateLoaded implements RecordStateLoaded {
 
   @override
   @JsonKey()
-  final String message;
-  @override
-  @JsonKey()
   final String error;
 
   @override
   String toString() {
-    return 'RecordState.loaded(records: $records, message: $message, error: $error)';
+    return 'RecordState.loaded(records: $records, error: $error)';
   }
 
   @override
@@ -613,13 +352,12 @@ class _$RecordStateLoaded implements RecordStateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$RecordStateLoaded &&
             const DeepCollectionEquality().equals(other._records, _records) &&
-            (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_records), message, error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_records), error);
 
   @JsonKey(ignore: true)
   @override
@@ -630,51 +368,36 @@ class _$RecordStateLoaded implements RecordStateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Record> records, String message, String error)
-        initial,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loading,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        error,
+    required TResult Function(List<Record> records, String error) loading,
+    required TResult Function(List<Record> records, String error) loaded,
+    required TResult Function(List<Record> records, String error) empty,
+    required TResult Function(List<Record> records, String error) error,
   }) {
-    return loaded(records, message, this.error);
+    return loaded(records, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Record> records, String message, String error)?
-        initial,
-    TResult? Function(List<Record> records, String message, String error)?
-        loading,
-    TResult? Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult? Function(List<Record> records, String message, String error)?
-        error,
+    TResult? Function(List<Record> records, String error)? loading,
+    TResult? Function(List<Record> records, String error)? loaded,
+    TResult? Function(List<Record> records, String error)? empty,
+    TResult? Function(List<Record> records, String error)? error,
   }) {
-    return loaded?.call(records, message, this.error);
+    return loaded?.call(records, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Record> records, String message, String error)?
-        initial,
-    TResult Function(List<Record> records, String message, String error)?
-        loading,
-    TResult Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult Function(List<Record> records, String message, String error)? error,
+    TResult Function(List<Record> records, String error)? loading,
+    TResult Function(List<Record> records, String error)? loaded,
+    TResult Function(List<Record> records, String error)? empty,
+    TResult Function(List<Record> records, String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(records, message, this.error);
+      return loaded(records, this.error);
     }
     return orElse();
   }
@@ -682,9 +405,9 @@ class _$RecordStateLoaded implements RecordStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordStateInitial value) initial,
     required TResult Function(RecordStateLoading value) loading,
     required TResult Function(RecordStateLoaded value) loaded,
+    required TResult Function(RecordStateEmpty value) empty,
     required TResult Function(RecordStateError value) error,
   }) {
     return loaded(this);
@@ -693,9 +416,9 @@ class _$RecordStateLoaded implements RecordStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecordStateInitial value)? initial,
     TResult? Function(RecordStateLoading value)? loading,
     TResult? Function(RecordStateLoaded value)? loaded,
+    TResult? Function(RecordStateEmpty value)? empty,
     TResult? Function(RecordStateError value)? error,
   }) {
     return loaded?.call(this);
@@ -704,9 +427,9 @@ class _$RecordStateLoaded implements RecordStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordStateInitial value)? initial,
     TResult Function(RecordStateLoading value)? loading,
     TResult Function(RecordStateLoaded value)? loaded,
+    TResult Function(RecordStateEmpty value)? empty,
     TResult Function(RecordStateError value)? error,
     required TResult orElse(),
   }) {
@@ -720,18 +443,186 @@ class _$RecordStateLoaded implements RecordStateLoaded {
 abstract class RecordStateLoaded implements RecordState {
   const factory RecordStateLoaded(
       {required final List<Record> records,
-      final String message,
       final String error}) = _$RecordStateLoaded;
 
   @override
   List<Record> get records;
   @override
-  String get message;
-  @override
   String get error;
   @override
   @JsonKey(ignore: true)
   _$$RecordStateLoadedCopyWith<_$RecordStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RecordStateEmptyCopyWith<$Res>
+    implements $RecordStateCopyWith<$Res> {
+  factory _$$RecordStateEmptyCopyWith(
+          _$RecordStateEmpty value, $Res Function(_$RecordStateEmpty) then) =
+      __$$RecordStateEmptyCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Record> records, String error});
+}
+
+/// @nodoc
+class __$$RecordStateEmptyCopyWithImpl<$Res>
+    extends _$RecordStateCopyWithImpl<$Res, _$RecordStateEmpty>
+    implements _$$RecordStateEmptyCopyWith<$Res> {
+  __$$RecordStateEmptyCopyWithImpl(
+      _$RecordStateEmpty _value, $Res Function(_$RecordStateEmpty) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? records = null,
+    Object? error = null,
+  }) {
+    return _then(_$RecordStateEmpty(
+      records: null == records
+          ? _value._records
+          : records // ignore: cast_nullable_to_non_nullable
+              as List<Record>,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RecordStateEmpty implements RecordStateEmpty {
+  const _$RecordStateEmpty(
+      {final List<Record> records = const [], this.error = ''})
+      : _records = records;
+
+  final List<Record> _records;
+  @override
+  @JsonKey()
+  List<Record> get records {
+    if (_records is EqualUnmodifiableListView) return _records;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_records);
+  }
+
+  @override
+  @JsonKey()
+  final String error;
+
+  @override
+  String toString() {
+    return 'RecordState.empty(records: $records, error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RecordStateEmpty &&
+            const DeepCollectionEquality().equals(other._records, _records) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_records), error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RecordStateEmptyCopyWith<_$RecordStateEmpty> get copyWith =>
+      __$$RecordStateEmptyCopyWithImpl<_$RecordStateEmpty>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Record> records, String error) loading,
+    required TResult Function(List<Record> records, String error) loaded,
+    required TResult Function(List<Record> records, String error) empty,
+    required TResult Function(List<Record> records, String error) error,
+  }) {
+    return empty(records, this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Record> records, String error)? loading,
+    TResult? Function(List<Record> records, String error)? loaded,
+    TResult? Function(List<Record> records, String error)? empty,
+    TResult? Function(List<Record> records, String error)? error,
+  }) {
+    return empty?.call(records, this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Record> records, String error)? loading,
+    TResult Function(List<Record> records, String error)? loaded,
+    TResult Function(List<Record> records, String error)? empty,
+    TResult Function(List<Record> records, String error)? error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(records, this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RecordStateLoading value) loading,
+    required TResult Function(RecordStateLoaded value) loaded,
+    required TResult Function(RecordStateEmpty value) empty,
+    required TResult Function(RecordStateError value) error,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RecordStateLoading value)? loading,
+    TResult? Function(RecordStateLoaded value)? loaded,
+    TResult? Function(RecordStateEmpty value)? empty,
+    TResult? Function(RecordStateError value)? error,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RecordStateLoading value)? loading,
+    TResult Function(RecordStateLoaded value)? loaded,
+    TResult Function(RecordStateEmpty value)? empty,
+    TResult Function(RecordStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RecordStateEmpty implements RecordState {
+  const factory RecordStateEmpty(
+      {final List<Record> records, final String error}) = _$RecordStateEmpty;
+
+  @override
+  List<Record> get records;
+  @override
+  String get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$RecordStateEmptyCopyWith<_$RecordStateEmpty> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -743,7 +634,7 @@ abstract class _$$RecordStateErrorCopyWith<$Res>
       __$$RecordStateErrorCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Record> records, String message, String error});
+  $Res call({List<Record> records, String error});
 }
 
 /// @nodoc
@@ -758,7 +649,6 @@ class __$$RecordStateErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? records = null,
-    Object? message = null,
     Object? error = null,
   }) {
     return _then(_$RecordStateError(
@@ -766,10 +656,6 @@ class __$$RecordStateErrorCopyWithImpl<$Res>
           ? _value._records
           : records // ignore: cast_nullable_to_non_nullable
               as List<Record>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -782,9 +668,7 @@ class __$$RecordStateErrorCopyWithImpl<$Res>
 
 class _$RecordStateError implements RecordStateError {
   const _$RecordStateError(
-      {final List<Record> records = const [],
-      this.message = '',
-      required this.error})
+      {final List<Record> records = const [], required this.error})
       : _records = records;
 
   final List<Record> _records;
@@ -797,14 +681,11 @@ class _$RecordStateError implements RecordStateError {
   }
 
   @override
-  @JsonKey()
-  final String message;
-  @override
   final String error;
 
   @override
   String toString() {
-    return 'RecordState.error(records: $records, message: $message, error: $error)';
+    return 'RecordState.error(records: $records, error: $error)';
   }
 
   @override
@@ -813,13 +694,12 @@ class _$RecordStateError implements RecordStateError {
         (other.runtimeType == runtimeType &&
             other is _$RecordStateError &&
             const DeepCollectionEquality().equals(other._records, _records) &&
-            (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_records), message, error);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_records), error);
 
   @JsonKey(ignore: true)
   @override
@@ -830,51 +710,36 @@ class _$RecordStateError implements RecordStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Record> records, String message, String error)
-        initial,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loading,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        loaded,
-    required TResult Function(
-            List<Record> records, String message, String error)
-        error,
+    required TResult Function(List<Record> records, String error) loading,
+    required TResult Function(List<Record> records, String error) loaded,
+    required TResult Function(List<Record> records, String error) empty,
+    required TResult Function(List<Record> records, String error) error,
   }) {
-    return error(records, message, this.error);
+    return error(records, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Record> records, String message, String error)?
-        initial,
-    TResult? Function(List<Record> records, String message, String error)?
-        loading,
-    TResult? Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult? Function(List<Record> records, String message, String error)?
-        error,
+    TResult? Function(List<Record> records, String error)? loading,
+    TResult? Function(List<Record> records, String error)? loaded,
+    TResult? Function(List<Record> records, String error)? empty,
+    TResult? Function(List<Record> records, String error)? error,
   }) {
-    return error?.call(records, message, this.error);
+    return error?.call(records, this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Record> records, String message, String error)?
-        initial,
-    TResult Function(List<Record> records, String message, String error)?
-        loading,
-    TResult Function(List<Record> records, String message, String error)?
-        loaded,
-    TResult Function(List<Record> records, String message, String error)? error,
+    TResult Function(List<Record> records, String error)? loading,
+    TResult Function(List<Record> records, String error)? loaded,
+    TResult Function(List<Record> records, String error)? empty,
+    TResult Function(List<Record> records, String error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(records, message, this.error);
+      return error(records, this.error);
     }
     return orElse();
   }
@@ -882,9 +747,9 @@ class _$RecordStateError implements RecordStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecordStateInitial value) initial,
     required TResult Function(RecordStateLoading value) loading,
     required TResult Function(RecordStateLoaded value) loaded,
+    required TResult Function(RecordStateEmpty value) empty,
     required TResult Function(RecordStateError value) error,
   }) {
     return error(this);
@@ -893,9 +758,9 @@ class _$RecordStateError implements RecordStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecordStateInitial value)? initial,
     TResult? Function(RecordStateLoading value)? loading,
     TResult? Function(RecordStateLoaded value)? loaded,
+    TResult? Function(RecordStateEmpty value)? empty,
     TResult? Function(RecordStateError value)? error,
   }) {
     return error?.call(this);
@@ -904,9 +769,9 @@ class _$RecordStateError implements RecordStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecordStateInitial value)? initial,
     TResult Function(RecordStateLoading value)? loading,
     TResult Function(RecordStateLoaded value)? loaded,
+    TResult Function(RecordStateEmpty value)? empty,
     TResult Function(RecordStateError value)? error,
     required TResult orElse(),
   }) {
@@ -920,13 +785,10 @@ class _$RecordStateError implements RecordStateError {
 abstract class RecordStateError implements RecordState {
   const factory RecordStateError(
       {final List<Record> records,
-      final String message,
       required final String error}) = _$RecordStateError;
 
   @override
   List<Record> get records;
-  @override
-  String get message;
   @override
   String get error;
   @override

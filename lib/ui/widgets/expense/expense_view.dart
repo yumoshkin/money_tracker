@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:money_tracker/business/cubits/expense_cubit/expense_cubit.dart';
 import 'package:money_tracker/ui/widgets/expense/expense_box.dart';
-import 'package:money_tracker/ui/widgets/record_list.dart';
+import 'package:money_tracker/ui/widgets/record/record_list.dart';
 
 class ExpenseView extends StatefulWidget {
   const ExpenseView({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _ExpenseViewState extends State<ExpenseView> {
           );
         }
 
-        if (state is ExpenseStateLoaded) {
+        if (state is ExpenseStateLoaded || state is ExpenseStateEmpty) {
           return _isShowCategoryRecords
               ? RecordList(
                   expense: state.expenses[_index],
@@ -57,14 +57,14 @@ class _ExpenseViewState extends State<ExpenseView> {
                 );
         }
 
-        if (state is ExpenseStateInitial) {
-          return const Center(
-            child: Text(
-              'Нет данных',
-              style: textStyle,
-            ),
-          );
-        }
+        // if (state is ExpenseStateInitial) {
+        //   return const Center(
+        //     child: Text(
+        //       'Нет данных',
+        //       style: textStyle,
+        //     ),
+        //   );
+        // }
 
         if (state is ExpenseStateError) {
           return Center(

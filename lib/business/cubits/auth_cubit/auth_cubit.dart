@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -73,7 +73,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> sendEmailVerification() async {
     final user = FirebaseAuth.instance.currentUser!;
     await user.sendEmailVerification();
-    emit(AuthStateSendEmailVerification());
+    emit(const AuthStateSendEmailVerification());
   }
 
   Future<void> resetPassword(
@@ -84,7 +84,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       emit(
-        AuthStateResetPassword(
+        const AuthStateResetPassword(
             message:
                 'Письмо для сброса пароля отправлено на вашу электронную почту'),
       );
@@ -101,14 +101,14 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signout() async {
     await FirebaseAuth.instance.signOut();
-    emit(AuthStateDisconnect());
+    emit(const AuthStateDisconnect());
   }
 
   void setUser(User? user) {
     if (user != null) {
       emit(AuthStateSuccess(user: user));
     } else {
-      emit(AuthStateInitial());
+      emit(const AuthStateInitial());
     }
   }
 }

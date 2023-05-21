@@ -56,7 +56,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               key: _formKey,
               child: Column(
                 children: [
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   const Text(
                     'Сброс пароля',
                     style: TextStyle(
@@ -66,7 +66,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
-                  Text(
+                  const Text(
                     'Письмо для сброса пароля будет отправлено на вашу электронную почту',
                     textAlign: TextAlign.center,
                     style: TextStyle(

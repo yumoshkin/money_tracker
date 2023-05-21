@@ -11,10 +11,10 @@ part 'category_cubit.freezed.dart';
 @injectable
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit({required this.categoryService})
-      : super(const CategoryState.initial());
+      : super(const CategoryState.empty());
   final CategoryService categoryService;
 
-  Future<void> loadCategories(String userId) async {
+  Future<void> loadCategoriesByUserId(String userId) async {
     try {
       emit(const CategoryState.loading());
 
@@ -24,7 +24,7 @@ class CategoryCubit extends Cubit<CategoryState> {
       if (categories.isNotEmpty) {
         emit(CategoryState.loaded(categories: categories));
       } else {
-        emit(const CategoryState.initial());
+        emit(const CategoryState.empty());
       }
     } catch (e) {
       emit(CategoryState.error(error: e.toString()));
@@ -34,11 +34,16 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> addCategory(Category category) async {
     try {
       emit(const CategoryState.loading());
+
       await categoryService.add(category);
       final List<Category> categories =
           await categoryService.getByUserId(category.userId);
-      emit(CategoryState.loaded(
-          categories: categories, message: 'Данные сохранены'));
+
+      if (categories.isNotEmpty) {
+        emit(CategoryState.loaded(categories: categories));
+      } else {
+        emit(const CategoryState.empty());
+      }
     } catch (e) {
       emit(CategoryState.error(
           error: e.toString().replaceFirst('Exception: ', '')));
@@ -48,11 +53,16 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> updateCategory(Category category) async {
     try {
       emit(const CategoryState.loading());
+
       await categoryService.update(category);
       final List<Category> categories =
           await categoryService.getByUserId(category.userId);
-      emit(CategoryState.loaded(
-          categories: categories, message: 'Данные сохранены'));
+
+      if (categories.isNotEmpty) {
+        emit(CategoryState.loaded(categories: categories));
+      } else {
+        emit(const CategoryState.empty());
+      }
     } catch (e) {
       emit(CategoryState.error(
           error: e.toString().replaceFirst('Exception: ', '')));
@@ -62,22 +72,18 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> deleteCategory(Category category) async {
     try {
       emit(const CategoryState.loading());
+
       await categoryService.delete(category.id);
       final List<Category> categories =
           await categoryService.getByUserId(category.userId);
 
       if (categories.isNotEmpty) {
-        emit(CategoryState.loaded(
-            categories: categories, message: 'Данные удалены'));
+        emit(CategoryState.loaded(categories: categories));
       } else {
-        emit(const CategoryState.initial(message: 'Данные удалены'));
+        emit(const CategoryState.empty());
       }
     } catch (e) {
       emit(CategoryState.error(error: e.toString()));
     }
-  }
-
-  String getCategoryName(String id) {
-    return state.categories.singleWhere((element) => element.id == String).name;
   }
 }

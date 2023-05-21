@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:money_tracker/ui/widgets/expense/expense_view.dart';
-import 'package:money_tracker/ui/widgets/profile_view.dart';
+import 'package:money_tracker/ui/widgets/profile/profile_view.dart';
 
 class TabItem {
   final String title;

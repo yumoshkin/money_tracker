@@ -18,12 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Expense {
   int get index => throw _privateConstructorUsedError;
   set index(int value) => throw _privateConstructorUsedError;
-  String get categoryId => throw _privateConstructorUsedError;
-  set categoryId(String value) => throw _privateConstructorUsedError;
-  String get categoryName => throw _privateConstructorUsedError;
-  set categoryName(String value) => throw _privateConstructorUsedError;
-  String get color => throw _privateConstructorUsedError;
-  set color(String value) => throw _privateConstructorUsedError;
+  Category get category => throw _privateConstructorUsedError;
+  set category(Category value) => throw _privateConstructorUsedError;
   List<Record> get records => throw _privateConstructorUsedError;
   set records(List<Record> value) => throw _privateConstructorUsedError;
   double get sum => throw _privateConstructorUsedError;
@@ -38,13 +34,9 @@ abstract class $ExpenseCopyWith<$Res> {
   factory $ExpenseCopyWith(Expense value, $Res Function(Expense) then) =
       _$ExpenseCopyWithImpl<$Res, Expense>;
   @useResult
-  $Res call(
-      {int index,
-      String categoryId,
-      String categoryName,
-      String color,
-      List<Record> records,
-      double sum});
+  $Res call({int index, Category category, List<Record> records, double sum});
+
+  $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -61,9 +53,7 @@ class _$ExpenseCopyWithImpl<$Res, $Val extends Expense>
   @override
   $Res call({
     Object? index = null,
-    Object? categoryId = null,
-    Object? categoryName = null,
-    Object? color = null,
+    Object? category = null,
     Object? records = null,
     Object? sum = null,
   }) {
@@ -72,18 +62,10 @@ class _$ExpenseCopyWithImpl<$Res, $Val extends Expense>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryName: null == categoryName
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category,
       records: null == records
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
@@ -94,6 +76,14 @@ class _$ExpenseCopyWithImpl<$Res, $Val extends Expense>
               as double,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryCopyWith<$Res> get category {
+    return $CategoryCopyWith<$Res>(_value.category, (value) {
+      return _then(_value.copyWith(category: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -103,13 +93,10 @@ abstract class _$$_ExpenseCopyWith<$Res> implements $ExpenseCopyWith<$Res> {
       __$$_ExpenseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int index,
-      String categoryId,
-      String categoryName,
-      String color,
-      List<Record> records,
-      double sum});
+  $Res call({int index, Category category, List<Record> records, double sum});
+
+  @override
+  $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -123,9 +110,7 @@ class __$$_ExpenseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
-    Object? categoryId = null,
-    Object? categoryName = null,
-    Object? color = null,
+    Object? category = null,
     Object? records = null,
     Object? sum = null,
   }) {
@@ -134,18 +119,10 @@ class __$$_ExpenseCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryName: null == categoryName
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category,
       records: null == records
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
@@ -163,20 +140,14 @@ class __$$_ExpenseCopyWithImpl<$Res>
 class _$_Expense implements _Expense {
   _$_Expense(
       {required this.index,
-      required this.categoryId,
-      required this.categoryName,
-      required this.color,
+      required this.category,
       required this.records,
       required this.sum});
 
   @override
   int index;
   @override
-  String categoryId;
-  @override
-  String categoryName;
-  @override
-  String color;
+  Category category;
   @override
   List<Record> records;
   @override
@@ -184,7 +155,7 @@ class _$_Expense implements _Expense {
 
   @override
   String toString() {
-    return 'Expense(index: $index, categoryId: $categoryId, categoryName: $categoryName, color: $color, records: $records, sum: $sum)';
+    return 'Expense(index: $index, category: $category, records: $records, sum: $sum)';
   }
 
   @JsonKey(ignore: true)
@@ -197,9 +168,7 @@ class _$_Expense implements _Expense {
 abstract class _Expense implements Expense {
   factory _Expense(
       {required int index,
-      required String categoryId,
-      required String categoryName,
-      required String color,
+      required Category category,
       required List<Record> records,
       required double sum}) = _$_Expense;
 
@@ -207,14 +176,8 @@ abstract class _Expense implements Expense {
   int get index;
   set index(int value);
   @override
-  String get categoryId;
-  set categoryId(String value);
-  @override
-  String get categoryName;
-  set categoryName(String value);
-  @override
-  String get color;
-  set color(String value);
+  Category get category;
+  set category(Category value);
   @override
   List<Record> get records;
   set records(List<Record> value);

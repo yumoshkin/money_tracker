@@ -8,17 +8,17 @@ List<Category> categories = [
       id: '1',
       userId: 'k4P3A6vG5IVCdYARD0dfA9t0Zvv2',
       name: 'Дом',
-      color: 'red'),
+      color: 'f44336'),
   const Category(
       id: '2',
       userId: 'k4P3A6vG5IVCdYARD0dfA9t0Zvv2',
       name: 'Машина',
-      color: 'blue'),
+      color: '2196f3'),
   const Category(
       id: '3',
       userId: 'k4P3A6vG5IVCdYARD0dfA9t0Zvv2',
       name: 'Кот',
-      color: 'yellow'),
+      color: 'ffeb3b'),
   const Category(id: '4', userId: '2', name: 'Категория_4', color: 'cyan'),
 ];
 
@@ -27,7 +27,7 @@ List<Category> categories = [
 class CategoryServiceMock implements CategoryService {
   @override
   Future<List<Category>> getByUserId(String userId) async {
-    await Future.delayed(const Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 100));
     return categories.where((element) => element.userId == userId).toList();
   }
 
@@ -54,6 +54,7 @@ class CategoryServiceMock implements CategoryService {
     categories[index] = categories[index].copyWith(
       id: category.id,
       name: category.name,
+      color: category.color,
     );
   }
 

@@ -29,7 +29,7 @@ class MonthYearDialogHeader extends StatelessWidget {
       height: 104,
       decoration: BoxDecoration(
         color: themeData.colorScheme.primary,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(15),
           topRight: Radius.circular(15),
         ),
@@ -47,20 +47,20 @@ class MonthYearDialogHeader extends StatelessWidget {
                   children: [
                     Text(
                       _getMonth(month),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     SizedBox(
                       width: 54,
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
                           year.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -75,20 +75,20 @@ class MonthYearDialogHeader extends StatelessWidget {
                 children: [
                   IconButton(
                     padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
+                    constraints: const BoxConstraints(),
                     color: Colors.white,
                     onPressed: arrowUpClick,
-                    icon: Icon(Icons.keyboard_arrow_up),
+                    icon: const Icon(Icons.keyboard_arrow_up),
                   ),
-                  SizedBox(width: 24),
+                  const SizedBox(width: 24),
                   IconButton(
                     padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
+                    constraints: const BoxConstraints(),
                     color: Colors.white,
                     onPressed: arrowDownClick,
-                    icon: Icon(Icons.keyboard_arrow_down),
+                    icon: const Icon(Icons.keyboard_arrow_down),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                 ],
               ),
             ],

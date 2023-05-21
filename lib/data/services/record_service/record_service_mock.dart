@@ -78,6 +78,11 @@ class RecordServiceMock implements RecordService {
     records.removeAt(index);
   }
 
+  @override
+  Future<void> deleteByCategoryId(String categoryId) async {
+    records.removeWhere((element) => element.categoryId == categoryId);
+  }
+
   String getNextId() {
     if (records.isNotEmpty) {
       final recordsList = [...records];

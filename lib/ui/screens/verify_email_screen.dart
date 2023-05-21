@@ -100,7 +100,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
                 children: [
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   const Text(
                     'Подтверждение E-mail',
                     style: TextStyle(

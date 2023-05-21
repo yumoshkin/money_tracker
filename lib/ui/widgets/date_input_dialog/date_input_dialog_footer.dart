@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MonthYearDialogFooter extends StatelessWidget {
-  const MonthYearDialogFooter({
+class DateInputDialogFooter extends StatelessWidget {
+  const DateInputDialogFooter({
     Key? key,
     required this.submit,
   }) : super(key: key);

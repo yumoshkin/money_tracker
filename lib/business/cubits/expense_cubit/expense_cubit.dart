@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:intl/intl.dart';
 
 import 'package:money_tracker/business/cubits/auth_cubit/auth_cubit.dart';
 import 'package:money_tracker/business/cubits/category_cubit/category_cubit.dart';
@@ -18,25 +17,27 @@ part 'expense_cubit.freezed.dart';
 class ExpenseCubit extends Cubit<ExpenseState> {
   late StreamSubscription categorySubscription;
   late StreamSubscription recordSubscription;
-  List<Expense> _monthExpenses = [];
-  DateTime _currentDate = DateTime.now();
   bool _isListening = false;
 
   ExpenseCubit({
     required this.authCubit,
     required this.categoryCubit,
     required this.recordCubit,
-  }) : super(ExpenseState.initial(
-            currentDate: DateTime.now(), monthYearTitle: '')) {
+  }) : super(
+          ExpenseState.empty(
+              year: DateTime.now().year, month: DateTime.now().month),
+        ) {
     categorySubscription = categoryCubit.stream.listen((state) {
-      if (_isListening && state is CategoryStateLoaded) {
-        // loadExpenseCategories();
+      if (_isListening &&
+          (state is CategoryStateLoaded || state is CategoryStateEmpty)) {
+        reloadMonthExpenses();
       }
     });
 
     recordSubscription = recordCubit.stream.listen((state) {
-      if (_isListening && state is RecordStateLoaded) {
-        // loadExpenseRecords();
+      if (_isListening &&
+          (state is RecordStateLoaded || state is RecordStateEmpty)) {
+        reloadMonthExpenses();
       }
     });
   }
@@ -45,64 +46,52 @@ class ExpenseCubit extends Cubit<ExpenseState> {
   final RecordCubit recordCubit;
 
   Future<void> init() async {
-    String monthYearTitle = getMonthYearTitle(_currentDate);
+    int year = DateTime.now().year;
+    int month = DateTime.now().month;
 
     try {
-      emit(ExpenseState.loading(
-        currentDate: _currentDate,
-        monthYearTitle: getMonthYearTitle(_currentDate),
-      ));
+      emit(ExpenseState.loading(year: year, month: month));
 
-      await categoryCubit.loadCategories(authCubit.state.user!.uid);
+      await categoryCubit.loadCategoriesByUserId(authCubit.state.user!.uid);
       await recordCubit.loadRecords();
-      await loadMonthExpenses(_currentDate);
+      await loadMonthExpenses(year, month);
 
       _isListening = true;
     } catch (e) {
-      emit(ExpenseState.error(
-        currentDate: _currentDate,
-        monthYearTitle: monthYearTitle,
-        error: e.toString(),
-      ));
+      emit(ExpenseState.error(year: year, month: month, error: e.toString()));
     }
   }
 
-  Future<void> loadMonthExpenses(DateTime dateTime) async {
-    _currentDate = dateTime;
-    String monthYearTitle = getMonthYearTitle(_currentDate);
-
+  Future<void> loadMonthExpenses(int year, int month) async {
     try {
-      emit(ExpenseState.loading(
-        currentDate: _currentDate,
-        monthYearTitle: monthYearTitle,
-      ));
+      emit(ExpenseState.loading(year: year, month: month));
 
-      _monthExpenses = getMonthExpenses(_currentDate);
-
-      if (_monthExpenses.isNotEmpty) {
-        emit(ExpenseState.loaded(
-          currentDate: _currentDate,
-          monthYearTitle: monthYearTitle,
-          expenses: _monthExpenses,
-        ));
+      final monthExpenses = getMonthExpenses(year, month);
+      if (monthExpenses.isNotEmpty) {
+        emit(
+          ExpenseState.loaded(
+            year: year,
+            month: month,
+            expenses: monthExpenses,
+          ),
+        );
       } else {
-        emit(ExpenseState.initial(
-          currentDate: _currentDate,
-          monthYearTitle: monthYearTitle,
-        ));
+        emit(ExpenseState.empty(year: year, month: month));
       }
     } catch (e) {
-      emit(ExpenseState.error(
-        currentDate: _currentDate,
-        monthYearTitle: monthYearTitle,
-        error: e.toString(),
-      ));
+      emit(
+        ExpenseState.error(year: year, month: month, error: e.toString()),
+      );
     }
   }
 
-  List<Expense> getMonthExpenses(DateTime dateTime) {
+  Future<void> reloadMonthExpenses() async {
+    await loadMonthExpenses(state.year, state.month);
+  }
+
+  List<Expense> getMonthExpenses(int year, int month) {
     List<Expense> expenses = getCategoryList();
-    return calcExpenses(expenses, dateTime);
+    return calcExpenses(year, month, expenses);
   }
 
   List<Expense> getCategoryList() {
@@ -111,9 +100,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
       (category) {
         var expense = Expense(
           index: index,
-          categoryId: category.id,
-          categoryName: category.name,
-          color: category.color,
+          category: category,
           records: [],
           sum: 0,
         );
@@ -126,30 +113,24 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     return categoryList;
   }
 
-  List<Expense> calcExpenses(List<Expense> categoryList, DateTime dateTime) {
+  List<Expense> calcExpenses(int year, int month, List<Expense> categoryList) {
     List<Expense> expenses = categoryList;
     List<Record> records = recordCubit.state.records;
-    Map<String, int> idToIndexMap = {};
-    final year = dateTime.year;
-    final month = dateTime.month;
+    Map<String, int> categoryIdToIndexMap = {};
 
-    for (var category in categoryList) {
-      idToIndexMap[category.categoryId] = category.index;
+    for (var expense in expenses) {
+      categoryIdToIndexMap[expense.category.id] = expense.index;
     }
 
     for (var record in records) {
-      if (record.createdAt.year == year && record.createdAt.month == month) {
-        expenses[idToIndexMap[record.categoryId]!].records.add(record);
-        expenses[idToIndexMap[record.categoryId]!].sum += record.cost;
+      if (record.createdAt.year == year &&
+          record.createdAt.month == month &&
+          categoryIdToIndexMap[record.categoryId] != null) {
+        expenses[categoryIdToIndexMap[record.categoryId]!].records.add(record);
+        expenses[categoryIdToIndexMap[record.categoryId]!].sum += record.cost;
       }
     }
 
     return expenses;
-  }
-
-  String getMonthYearTitle(DateTime dateTime) {
-    var month = toBeginningOfSentenceCase(DateFormat('MMMM').format(dateTime));
-    var monthYearTitle = '$month ${dateTime.year}';
-    return monthYearTitle;
   }
 }

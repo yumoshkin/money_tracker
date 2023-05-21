@@ -26,7 +26,7 @@ class FormFieldPassword extends StatelessWidget {
         isDense: true,
         alignLabelWithHint: true,
         suffixIcon: IconButton(
-          padding: EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 20),
           icon:
               Icon(isPasswordObscure ? Icons.visibility : Icons.visibility_off),
           onPressed: togglePasswordVisibility,

@@ -52,6 +52,10 @@ class _SignupFormState extends State<SignupForm> {
           _passwordController.text.trim(),
         );
 
+    setState(() {
+      _isProcessing = false;
+    });
+
     if (mounted) {
       Navigator.push(
         context,
@@ -92,8 +96,8 @@ class _SignupFormState extends State<SignupForm> {
               ElevatedButton(
                 onPressed: !_isProcessing ? () => _signup(context) : null,
                 child: !_isProcessing
-                    ? Text('Регистрация')
-                    : CircularProgressIndicator(),
+                    ? const Text('Регистрация')
+                    : const CircularProgressIndicator(),
               ),
             ],
           ),
