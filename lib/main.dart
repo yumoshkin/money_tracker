@@ -7,11 +7,11 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_standalone.dart';
 
+import 'package:money_tracker/business/cubits/auth_cubit/auth_cubit.dart';
 import 'package:money_tracker/business/cubits/category_cubit/category_cubit.dart';
+import 'package:money_tracker/business/cubits/cubit_provider.dart';
 import 'package:money_tracker/business/cubits/expense_cubit/expense_cubit.dart';
 import 'package:money_tracker/business/cubits/record_cubit/record_cubit.dart';
-import 'package:money_tracker/business/cubits/auth_cubit/auth_cubit.dart';
-import 'package:money_tracker/business/cubits/cubit_provider.dart';
 import 'package:money_tracker/ui/screens/firebase_screen.dart';
 import 'package:money_tracker/ui/theme/theme.dart';
 
@@ -22,7 +22,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  initializeCubit(Environment.dev);
+  initializeCubit(Environment.prod);
   Intl.defaultLocale = 'ru_RU';
   Intl.systemLocale = await findSystemLocale();
   runApp(const App());

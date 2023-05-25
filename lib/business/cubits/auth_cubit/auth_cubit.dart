@@ -3,13 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
+part 'auth_state.dart';
 
 @injectable
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit()
-      : super(AuthStateInitial(user: FirebaseAuth.instance.currentUser));
+  AuthCubit() : super(const AuthStateInitial());
 
   Future<bool> signin(
     String email,
@@ -18,6 +17,8 @@ class AuthCubit extends Cubit<AuthState> {
     var errorText = '';
 
     try {
+      emit(const AuthStateInitial());
+
       final userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -26,11 +27,13 @@ class AuthCubit extends Cubit<AuthState> {
 
       if (userCredential.user != null) {
         emit(AuthStateSuccess(user: userCredential.user));
+        return true;
+      } else {
+        return false;
       }
-      return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        errorText = 'Этот адрес электронной почты не зарегистрирован';
+        errorText = 'Этот e-mail не зарегистрирован';
       } else if (e.code == 'wrong-password') {
         errorText = 'Неправильный пароль';
       } else {
@@ -42,10 +45,12 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> signup(
+  Future<bool> signup(
     String email,
     String password,
   ) async {
+    emit(const AuthStateInitial());
+
     UserCredential? userCredential;
     var errorText = '';
 
@@ -58,21 +63,28 @@ class AuthCubit extends Cubit<AuthState> {
 
       if (userCredential.user != null) {
         emit(AuthStateSuccess(user: userCredential.user));
+        return true;
+      } else {
+        return false;
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        errorText = 'Этот адрес электронной почты уже зарегистрирован';
+        errorText = 'Этот e-mail уже зарегистрирован';
       } else {
         errorText = e.message.toString();
       }
 
       emit(AuthStateError(error: errorText));
+      return false;
     }
   }
 
   Future<void> sendEmailVerification() async {
     final user = FirebaseAuth.instance.currentUser!;
+    emit(AuthStateInitial(user: user));
+
     await user.sendEmailVerification();
+
     emit(const AuthStateSendEmailVerification());
   }
 
@@ -80,17 +92,17 @@ class AuthCubit extends Cubit<AuthState> {
     String email,
   ) async {
     var errorText = '';
+    emit(const AuthStateInitial());
 
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       emit(
         const AuthStateResetPassword(
-            message:
-                'Письмо для сброса пароля отправлено на вашу электронную почту'),
+            message: 'Письмо для сброса пароля отправлено на ваш e-mail'),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        errorText = 'Этот E-mail не зарегистрирован';
+        errorText = 'Этот e-mail не зарегистрирован';
       } else {
         errorText = e.message.toString();
       }
@@ -100,15 +112,13 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signout() async {
+    emit(AuthStateInitial(user: FirebaseAuth.instance.currentUser));
     await FirebaseAuth.instance.signOut();
     emit(const AuthStateDisconnect());
   }
 
   void setUser(User? user) {
-    if (user != null) {
-      emit(AuthStateSuccess(user: user));
-    } else {
-      emit(const AuthStateInitial());
-    }
+    emit(AuthStateInitial(user: FirebaseAuth.instance.currentUser));
+    emit(AuthStateSuccess(user: user));
   }
 }

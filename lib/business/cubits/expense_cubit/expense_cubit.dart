@@ -15,6 +15,7 @@ part 'expense_cubit.freezed.dart';
 
 @injectable
 class ExpenseCubit extends Cubit<ExpenseState> {
+  late StreamSubscription authSubscription;
   late StreamSubscription categorySubscription;
   late StreamSubscription recordSubscription;
   bool _isListening = false;
@@ -67,6 +68,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
       emit(ExpenseState.loading(year: year, month: month));
 
       final monthExpenses = getMonthExpenses(year, month);
+
       if (monthExpenses.isNotEmpty) {
         emit(
           ExpenseState.loaded(

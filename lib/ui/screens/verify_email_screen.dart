@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -92,7 +93,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
       : Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: const Text('Верификация электронной почты'),
+            title: const Text('Подтверждение E-mail'),
             centerTitle: true,
           ),
           body: SafeArea(
@@ -101,15 +102,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 32),
-                  const Text(
-                    'Подтверждение E-mail',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 12),
                   const Text(
                     'Письмо для подтверждения E-mail было отправлено на вашу электронную почту',
                     style: TextStyle(

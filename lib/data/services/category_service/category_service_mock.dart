@@ -5,21 +5,29 @@ import 'package:money_tracker/data/services/category_service/category_service.da
 
 List<Category> categories = [
   const Category(
-      id: '1',
-      userId: 'k4P3A6vG5IVCdYARD0dfA9t0Zvv2',
-      name: 'Дом',
-      color: 'f44336'),
+    id: '1',
+    userId: 'xOqaD6BrdSOevAfBemzFmyfPWuf2',
+    name: 'Home',
+    color: 'f44336',
+  ),
   const Category(
-      id: '2',
-      userId: 'k4P3A6vG5IVCdYARD0dfA9t0Zvv2',
-      name: 'Машина',
-      color: '2196f3'),
+    id: '2',
+    userId: 'xOqaD6BrdSOevAfBemzFmyfPWuf2',
+    name: 'Car',
+    color: '2196f3',
+  ),
   const Category(
-      id: '3',
-      userId: 'k4P3A6vG5IVCdYARD0dfA9t0Zvv2',
-      name: 'Кот',
-      color: 'ffeb3b'),
-  const Category(id: '4', userId: '2', name: 'Категория_4', color: 'cyan'),
+    id: '3',
+    userId: 'GPck0yoU3JWSFwBxaCHgZrs5UsW2',
+    name: 'Cat',
+    color: 'ffeb3b',
+  ),
+  const Category(
+    id: '4',
+    userId: 'GPck0yoU3JWSFwBxaCHgZrs5UsW2',
+    name: 'Dog',
+    color: 'cyan',
+  ),
 ];
 
 @Environment("dev")

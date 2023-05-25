@@ -57,15 +57,6 @@ class _ExpenseViewState extends State<ExpenseView> {
                 );
         }
 
-        // if (state is ExpenseStateInitial) {
-        //   return const Center(
-        //     child: Text(
-        //       'Нет данных',
-        //       style: textStyle,
-        //     ),
-        //   );
-        // }
-
         if (state is ExpenseStateError) {
           return Center(
             child: Text(

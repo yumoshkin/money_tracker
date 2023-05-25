@@ -4,9 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
 import 'package:money_tracker/ui/utils/functions.dart';
 
-enum ImageState { missing, processing, selected, uploaded }
+enum ImageState { missing, selected, uploading, uploaded }
 
 class ProfileAvatar extends StatefulWidget {
   const ProfileAvatar({Key? key}) : super(key: key);
@@ -17,21 +18,22 @@ class ProfileAvatar extends StatefulWidget {
 
 class _ProfileAvatarState extends State<ProfileAvatar> {
   final _storage = FirebaseStorage.instance;
+  final String _imageFolder = 'images';
   ImageState _imageState = ImageState.missing;
   XFile? _image;
-  String _imageFolder = 'images';
   String _imageUrl = '';
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await _setImageName();
+      _setImageName();
     });
   }
 
-  Future<void> _setImageName() async {
-    final photoURL = await FirebaseAuth.instance.currentUser!.photoURL;
+  void _setImageName() {
+    final photoURL = FirebaseAuth.instance.currentUser!.photoURL;
+
     if (photoURL != null && photoURL.isNotEmpty) {
       setState(() {
         _imageUrl = photoURL;
@@ -64,7 +66,7 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
 
     try {
       setState(() {
-        _imageState = ImageState.processing;
+        _imageState = ImageState.uploading;
       });
 
       await imageRef.putFile(File(_image!.path));
@@ -91,23 +93,33 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
         onTap: _pickImage,
         child: Padding(
           padding: const EdgeInsets.only(left: 5),
-          child: CircleAvatar(
-            radius: 40,
-            backgroundColor: const Color(0xffd0d0d0),
-            backgroundImage: _imageState == ImageState.uploaded
-                ? NetworkImage(_imageUrl) as ImageProvider
-                : _imageState == ImageState.selected
-                    ? FileImage(File(_image!.path))
-                    : null,
-            child: _imageState == ImageState.processing
-                ? const CircularProgressIndicator()
-                : _imageState == ImageState.missing
+          child: Stack(
+            children: [
+              CircleAvatar(
+                radius: 40,
+                backgroundColor: const Color(0xffd0d0d0),
+                backgroundImage: _imageState == ImageState.uploaded
+                    ? NetworkImage(_imageUrl) as ImageProvider
+                    : _imageState == ImageState.selected ||
+                            _imageState == ImageState.uploading
+                        ? FileImage(File(_image!.path))
+                        : null,
+                child: _imageState == ImageState.missing
                     ? const Icon(
                         Icons.photo_camera,
                         size: 36,
-                        color: const Color(0xffababab),
+                        color: Color(0xffababab),
                       )
                     : null,
+              ),
+              Positioned(
+                left: 22.5,
+                top: 22.5,
+                child: _imageState == ImageState.uploading
+                    ? const CircularProgressIndicator()
+                    : const SizedBox.shrink(),
+              ),
+            ],
           ),
         ),
       ),

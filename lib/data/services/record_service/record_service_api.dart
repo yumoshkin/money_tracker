@@ -60,8 +60,14 @@ class RecordServiceApi implements RecordService {
 
   @override
   Future<void> deleteByCategoryId(String categoryId) async {
-    final docs =
-        FirebaseFirestore.instance.collection('records').doc(categoryId);
-    await docs.delete();
+    final collection =
+        await FirebaseFirestore.instance.collection('records').get();
+
+    for (var doc in collection.docs) {
+      final record = Record.fromJson(doc.data());
+      if (record.categoryId == categoryId) {
+        doc.reference.delete();
+      }
+    }
   }
 }

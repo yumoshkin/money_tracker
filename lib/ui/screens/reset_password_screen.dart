@@ -40,7 +40,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       listener: (context, state) {
         if (state.message.isNotEmpty) {
           showSnackBarSuccess(context, state.message);
-          Navigator.pop(context);
         } else if (state.error.isNotEmpty) {
           showSnackBarError(context, state.error);
         }
@@ -57,15 +56,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 32),
-                  const Text(
-                    'Сброс пароля',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 12),
                   const Text(
                     'Письмо для сброса пароля будет отправлено на вашу электронную почту',
                     textAlign: TextAlign.center,

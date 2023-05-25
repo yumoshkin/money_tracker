@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:money_tracker/business/cubits/auth_cubit/auth_cubit.dart';
+import 'package:money_tracker/business/cubits/expense_cubit/expense_cubit.dart';
 import 'package:money_tracker/ui/screens/firebase_screen.dart';
 import 'package:money_tracker/ui/utils/functions.dart';
 import 'package:money_tracker/ui/widgets/form_field/form_field_email.dart';
@@ -47,21 +48,28 @@ class _SignupFormState extends State<SignupForm> {
       _isProcessing = true;
     });
 
-    await context.read<AuthCubit>().signup(
+    final isLogged = await context.read<AuthCubit>().signup(
           _emailController.text.trim(),
           _passwordController.text.trim(),
         );
 
+    if (isLogged) {
+      if (mounted) {
+        await context.read<ExpenseCubit>().init();
+      }
+
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const FirebaseScreen(),
+          ),
+        );
+      }
+    }
+
     setState(() {
       _isProcessing = false;
     });
-
-    if (mounted) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const FirebaseScreen()),
-      );
-    }
   }
 
   @override

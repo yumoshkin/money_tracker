@@ -71,11 +71,9 @@ class _CategoryFormState extends State<CategoryForm> {
           );
     }
 
-    _pop();
-  }
-
-  void _pop() {
-    Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
   }
 
   @override

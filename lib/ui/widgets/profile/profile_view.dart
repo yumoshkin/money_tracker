@@ -15,9 +15,30 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  bool _isProcessing = false;
+
+  void _signout(BuildContext context) async {
+    setState(() {
+      _isProcessing = true;
+    });
+
+    await context.read<AuthCubit>().signout();
+
+    setState(() {
+      _isProcessing = false;
+    });
+
+    if (mounted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final email = context.read<AuthCubit>().state.user!.email;
+    final email = context.read<AuthCubit>().state.user!.email!;
 
     return Scaffold(
       appBar: AppBar(
@@ -42,22 +63,19 @@ class _ProfileViewState extends State<ProfileView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    email!,
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                    email,
+                    style: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 11),
                   SizedBox(
                     width: 145,
                     child: ElevatedButton(
-                      onPressed: () {
-                        context.read<AuthCubit>().signout();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginScreen()),
-                        );
-                      },
-                      child: const Text('Выйти'),
+                      onPressed:
+                          !_isProcessing ? () => _signout(context) : null,
+                      child: !_isProcessing
+                          ? const Text('Выйти')
+                          : const CircularProgressIndicator(),
                     ),
                   ),
                 ],

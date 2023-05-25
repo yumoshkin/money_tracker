@@ -25,7 +25,7 @@ class CategoryServiceApi implements CategoryService {
 
   @override
   Future<String> add(Category category) async {
-    final doc = FirebaseFirestore.instance.collection('purchases').doc();
+    final doc = FirebaseFirestore.instance.collection('categories').doc();
     final categoryWithId = category.copyWith(id: doc.id);
     await doc.set(categoryWithId.toJson());
     return doc.id;

@@ -30,12 +30,18 @@ List<Record> records = [
   ),
   Record(
     id: '5',
+    categoryId: '1',
+    cost: 400.00,
+    createdAt: DateTime(2023, 5, 15, 10, 30, 0),
+  ),
+  Record(
+    id: '6',
     categoryId: '3',
     cost: 150.0,
     createdAt: DateTime(2023, 5, 15, 10, 35, 0),
   ),
   Record(
-    id: '6',
+    id: '7',
     categoryId: '3',
     cost: 50.0,
     createdAt: DateTime(2023, 5, 20, 11, 30, 0),

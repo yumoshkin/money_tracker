@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:money_tracker/business/cubits/expense_cubit/expense_cubit.dart';
 import 'package:money_tracker/business/cubits/record_cubit/record_cubit.dart';
 import 'package:money_tracker/data/models/record/record.dart';
 import 'package:money_tracker/ui/utils/functions.dart';
@@ -33,6 +34,17 @@ class _RecordFormState extends State<RecordForm> {
       _date = widget.record!.createdAt;
     }
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final year = context.read<ExpenseCubit>().state.year;
+      final month = context.read<ExpenseCubit>().state.month;
+
+      if (year != _date.year || month != _date.month) {
+        setState(() {
+          _date = DateTime(year, month, 1);
+        });
+      }
+    });
   }
 
   @override
@@ -68,11 +80,9 @@ class _RecordFormState extends State<RecordForm> {
           );
     }
 
-    _pop();
-  }
-
-  void _pop() {
-    Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
   }
 
   @override

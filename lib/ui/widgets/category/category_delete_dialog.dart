@@ -5,6 +5,7 @@ import 'package:money_tracker/business/cubits/category_cubit/category_cubit.dart
 import 'package:money_tracker/business/cubits/record_cubit/record_cubit.dart';
 import 'package:money_tracker/data/models/category/category.dart';
 import 'package:money_tracker/ui/theme/theme.dart';
+import 'package:money_tracker/ui/utils/functions.dart';
 
 class CategoryDeleteDialog extends StatefulWidget {
   const CategoryDeleteDialog({
@@ -28,28 +29,23 @@ class _CategoryDeleteDialogState extends State<CategoryDeleteDialog> {
     await context
         .read<RecordCubit>()
         .deleteRecordsByCategoryId(widget.category.id);
-    _deleteCategory(widget.category);
 
-    _pop();
-  }
+    if (mounted) {
+      await context.read<CategoryCubit>().deleteCategory(widget.category);
+    }
 
-  void _deleteCategory(Category category) async {
-    await context.read<CategoryCubit>().deleteCategory(category);
-  }
-
-  void _pop() {
-    Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<CategoryCubit, CategoryState>(
       listener: (context, state) {
-        // if (state.message.isNotEmpty) {
-        //   showSnackBarSuccess(context, state.message);
-        // } else if (state.error.isNotEmpty) {
-        //   showSnackBarError(context, state.error);
-        // }
+        if (state.error.isNotEmpty) {
+          showSnackBarError(context, state.error);
+        }
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,

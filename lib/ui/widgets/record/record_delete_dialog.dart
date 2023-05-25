@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:money_tracker/business/cubits/record_cubit/record_cubit.dart';
 import 'package:money_tracker/data/models/record/record.dart';
 import 'package:money_tracker/ui/theme/theme.dart';
+import 'package:money_tracker/ui/utils/functions.dart';
 
 class RecordDeleteDialog extends StatefulWidget {
   const RecordDeleteDialog({
@@ -25,22 +26,23 @@ class _RecordDeleteDialogState extends State<RecordDeleteDialog> {
     });
 
     await context.read<RecordCubit>().deleteRecord(widget.record);
-    _pop();
-  }
 
-  void _pop() {
-    Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
+
+    setState(() {
+      _isProcessing = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<RecordCubit, RecordState>(
       listener: (context, state) {
-        // if (state.message.isNotEmpty) {
-        //   showSnackBarSuccess(context, state.message);
-        // } else if (state.error.isNotEmpty) {
-        //   showSnackBarError(context, state.error);
-        // }
+        if (state.error.isNotEmpty) {
+          showSnackBarError(context, state.error);
+        }
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
